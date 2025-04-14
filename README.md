@@ -8,5 +8,5 @@
 ## Install
 
 ```sh
-git clone "git@github.com:cm-360/dotfiles.git" "$HOME/.dotfiles" && "$HOME/.dotfiles/install.sh"
+curl -fsSL "https://raw.githubusercontent.com/cm-360/dotfiles/refs/heads/main/install.sh" | bash
 ```
