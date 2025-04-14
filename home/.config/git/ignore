@@ -1,0 +1,7 @@
+# Direnv / nix-direnv
+.direnv/
+.envrc
+/.nix-shell/
+
+# VSCode
+.vscode/

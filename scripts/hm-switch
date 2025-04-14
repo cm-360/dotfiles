@@ -1,0 +1,175 @@
+#!/usr/bin/env python3
+
+import argparse
+import getpass
+import os
+import subprocess
+import sys
+
+NIX_CONFIGS = "~/.dotfiles/nix"
+FLAKE_UPDATE_LOG = "flake-update.log"
+REBUILD_LOG = "hm-switch.log"
+
+
+def update_flake():
+    """Update flake inputs and handle errors."""
+    print("\n⏳ Updating flake inputs...", end="")
+
+    try:
+        # Run `nix flake update` and capture output
+        with open(FLAKE_UPDATE_LOG, "w") as log_file:
+            subprocess.run(
+                ["nix", "flake", "update"],
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                check=True,
+            )
+        print("\r❄️ Flake inputs are up-to-date.")
+    except subprocess.CalledProcessError:
+        print("\r🚫 Flake update failed, see the log for details.\n")
+        input("Press [enter] to continue...")
+
+        # Display the log file content
+        page_file(FLAKE_UPDATE_LOG)
+
+        sys.exit(1)
+
+
+def rebuild_home_configuration(force: bool = False):
+    """Rebuild configuration if changes are detected or if forced."""
+
+    # Check if there are any git changes
+    result = subprocess.run(["git", "diff", "--quiet"])
+
+    if result.returncode == 0 and not force:
+        print("\n💤 No changes, exiting.\n")
+        return
+
+    print("\n⏳ Rebuilding...", end="")
+
+    try:
+        # Run home-manager switch and capture output in a log file
+        with open(REBUILD_LOG, "w") as log_file:
+            subprocess.run(
+                ["home-manager", "switch", "--flake", "."],
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                check=True,
+            )
+        print("\r🏠 Rebuild successful!")
+        display_home_generation()
+    except subprocess.CalledProcessError:
+        print("\r🚫 Rebuild failed, see the log for details.\n")
+        input("Press [enter] to continue...")
+
+        # Display the log file content
+        page_file(REBUILD_LOG)
+
+        sys.exit(1)
+
+
+def display_home_generation():
+    try:
+        # Display rebuild results
+        generations_result = subprocess.run(
+            ["home-manager", "generations"],
+            stdout=subprocess.PIPE,
+            text=True,
+        )
+
+        version_result = subprocess.run(
+            ["home-manager", "--version"],
+            stdout=subprocess.PIPE,
+            text=True,
+        )
+        version = version_result.stdout.strip()
+
+        # TODO: check current
+        line = generations_result.stdout.splitlines()[0]
+        parts = line.split()
+        print()
+        print(f"  Generation : {parts[4]}")
+        print(f"  Build Date : {parts[0]} {parts[1]}")
+        print(f"  HM Version : {version}\n")
+    except subprocess.CalledProcessError:
+        print("🚫 Failed to retrieve current generation.")
+        sys.exit(1)
+
+
+def page_file(filename: str):
+    try:
+        subprocess.run(["bat", "--paging", "always", filename])
+    except subprocess.CalledProcessError:
+        try:
+            subprocess.run(["less", filename])
+        except subprocess.CalledProcessError:
+            with open(filename, "r") as text_file:
+                print("\nLog:")
+                print(text_file.read())
+
+
+def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Home Manager helper script")
+    parser.add_argument("--update", action="store_true", help="Update flake inputs")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force rebuild even if no changes are detected",
+    )
+    parser.add_argument(
+        "--show-generation",
+        action="store_true",
+        help="Show current generation and exit",
+    )
+    parser.add_argument(
+        "--show-home-log",
+        action="store_true",
+        help="Show previous Home Manager build log",
+    )
+    parser.add_argument(
+        "--show-flake-log",
+        action="store_true",
+        help="Show previous flake update log",
+    )
+    args = parser.parse_args()
+
+    if args.show_generation:
+        display_home_generation()
+        return
+
+    # Determine the configuration directory based on hostname/username
+    hostname = os.uname().nodename
+    username = getpass.getuser()
+    host_dir = os.path.expanduser(
+        f"{NIX_CONFIGS}/home-manager/homes/{hostname}_{username}"
+    )
+
+    # Change to the appropriate directory
+    try:
+        os.chdir(host_dir)
+    except FileNotFoundError:
+        print(f"Error: Configuration directory '{host_dir}' does not exist.")
+        sys.exit(1)
+
+    if args.show_flake_log:
+        page_file(FLAKE_UPDATE_LOG)
+        return
+
+    if args.show_home_log:
+        page_file(REBUILD_LOG)
+        return
+
+    # Track all files in the repo
+    subprocess.run(["git", "add", "-AN"])
+
+    # Update flake inputs if needed
+    if args.update:
+        update_flake()
+
+    # Rebuild Home Manager configuration
+    rebuild_home_configuration(args.force)
+
+
+if __name__ == "__main__":
+    main()

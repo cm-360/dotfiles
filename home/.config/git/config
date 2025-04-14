@@ -1,0 +1,33 @@
+[core]
+excludesFile = "~/.config/git/ignore"
+
+[init]
+defaultBranch = "main"
+
+[commit]
+gpgSign = true
+
+[tag]
+gpgSign = true
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+
+# From https://stackoverflow.com/a/79323503
+# HTTPS: https://some.domain.com/**
+# SSH: git@some.domain.com:*/**
+
+# github.com
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+path="~/.config/git/config-github"
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+path="~/.config/git/config-github"
+
+# <school_git_remote>
+[includeIf "hasconfig:remote.*.url:git@<school_git_remote>:*/**"]
+path="~/.config/git/config-school"
+[includeIf "hasconfig:remote.*.url:https://<school_git_remote>/**"]
+path="~/.config/git/config-school"

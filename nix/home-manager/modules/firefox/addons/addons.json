@@ -1,0 +1,112 @@
+{
+  "bitwarden": {
+    "pname": "bitwarden",
+    "version": "2025.3.2",
+    "addonId": "{446900e4-71c2-419f-a6a7-df9c091e268b}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4467426/bitwarden_password_manager-2025.3.2.xpi",
+    "sha256": "30f9384a46f6ef2ba6c9d273fc7c77a9afeef120dc4b3cbc5c28f171f4e8aeab",
+    "meta": {
+      "homepage": "https://bitwarden.com",
+      "description": "At home, at work, or on the go, Bitwarden easily secures all your passwords, passkeys, and sensitive information."
+    }
+  },
+  "clearurls": {
+    "pname": "clearurls",
+    "version": "1.27.3",
+    "addonId": "{74145f27-f039-47ce-a470-a662b129930a}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4432106/clearurls-1.27.3.xpi",
+    "sha256": "54926b6e4274d5935a5fc0daa6320f1d371e3d2f1a5877467ca3ab22a65c4f20",
+    "meta": {
+      "homepage": "https://clearurls.xyz/",
+      "description": "Removes tracking elements from URLs"
+    }
+  },
+  "darkreader": {
+    "pname": "darkreader",
+    "version": "4.9.103",
+    "addonId": "addon@darkreader.org",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4439735/darkreader-4.9.103.xpi",
+    "sha256": "f565b2263a71626a0310380915b7aef90be8cc6fe16ea43ac1a0846efedc2e4c",
+    "meta": {
+      "homepage": "https://darkreader.org/",
+      "description": "Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing."
+    }
+  },
+  "localcdn": {
+    "pname": "localcdn",
+    "version": "2.6.79",
+    "addonId": "{b86e4813-687a-43e6-ab65-0bde4ab75758}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4464649/localcdn_fork_of_decentraleyes-2.6.79.xpi",
+    "sha256": "3180fe626b674d63191cc6d26516b16fd82f3e23500457e6149dcd14febd9eb5",
+    "meta": {
+      "homepage": "https://www.localcdn.org",
+      "description": "Emulates remote frameworks (e.g. jQuery, Bootstrap, AngularJS) and delivers them as local resource. Prevents unnecessary 3rd party requests to Google, StackPath, MaxCDN and more. Prepared rules for uBlock Origin/uMatrix."
+    }
+  },
+  "plasma-integration": {
+    "pname": "plasma-integration",
+    "version": "1.9.1",
+    "addonId": "plasma-browser-integration@kde.org",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4298512/plasma_integration-1.9.1.xpi",
+    "sha256": "394a3525185679dd5430d05f980ab6be19d96557560fe86208c21a8807669b33",
+    "meta": {
+      "homepage": "http://kde.org",
+      "description": "Multitask efficiently by controlling browser functions from the Plasma desktop."
+    }
+  },
+  "privacy-badger": {
+    "pname": "privacy-badger",
+    "version": "2025.3.27",
+    "addonId": "jid1-MnnxcxisBPnSXQ@jetpack",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4463652/privacy_badger17-2025.3.27.xpi",
+    "sha256": "45976baab7476792dcad07f4386be618fd49b27eeb000c5e6b4b6f3611bf865e",
+    "meta": {
+      "homepage": "https://privacybadger.org/",
+      "description": "Automatically learns to block invisible trackers."
+    }
+  },
+  "simple-tab-groups": {
+    "pname": "simple-tab-groups",
+    "version": "5.3.1",
+    "addonId": "simple-tab-groups@drive4ik",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4445799/simple_tab_groups-5.3.1.xpi",
+    "sha256": "119713d6f7ddce4fee3d309b67c3644b595300d7523a72efe0ffd585c6d17dc6",
+    "meta": {
+      "homepage": "https://github.com/drive4ik/simple-tab-groups",
+      "description": "Create, modify, and quickly change tab groups"
+    }
+  },
+  "stylus": {
+    "pname": "stylus",
+    "version": "2.3.14",
+    "addonId": "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4451438/styl_us-2.3.14.xpi",
+    "sha256": "02861b4256d7001a091ce1fbeaaf5ddcf670c3df9db55be3af2bd703a11315d8",
+    "meta": {
+      "homepage": "https://add0n.com/stylus.html",
+      "description": "Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets."
+    }
+  },
+  "terms-of-service-didnt-read": {
+    "pname": "terms-of-service-didnt-read",
+    "version": "5.1.1",
+    "addonId": "jid0-3GUEt1r69sQNSrca5p8kx9Ezc3U@jetpack",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4464742/terms_of_service_didnt_read-5.1.1.xpi",
+    "sha256": "adeb00974e01177548bfc065be1d29c0c7e2992d6684ced2c555ca88dc45f243",
+    "meta": {
+      "homepage": "http://tosdr.org",
+      "description": "\u201cI have read and agree to the Terms\u201d is the biggest lie on the web. We aim to fix that. Get informed instantly about websites' terms &amp; privacy policies, with ratings and summaries from the www.tosdr.org initiative."
+    }
+  },
+  "ublock-origin": {
+    "pname": "ublock-origin",
+    "version": "1.63.2",
+    "addonId": "uBlock0@raymondhill.net",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-1.63.2.xpi",
+    "sha256": "d93176cef4dc042e41ba500aa2a90e5d57b5be77449cbd522111585e3a0cd158",
+    "meta": {
+      "homepage": "https://github.com/gorhill/uBlock#ublock-origin",
+      "description": "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory."
+    }
+  }
+}

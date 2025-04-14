@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+
+# Enter appropriate host directory
+pushd "$HOME/.nixos-configs/nixos/hosts/$(hostname)" > /dev/null
+# Start with blank line for formatting
+echo
+
+# Track all files in repo
+git add -AN
+
+
+# Update flake inputs
+
+if [[ "$1" == "--update" ]]; then
+    gum spin --spinner line --title "Updating flake inputs..." -- \
+        sh -c 'nix flake update &> flake-update.log'
+
+    if [[ $? -ne 0 ]]; then
+        echo -e "🚫 Flake update failed, see the log for details.\n"
+
+        read -p "Press [enter] to continue..."
+        cat flake-update.log | gum pager
+
+        popd > /dev/null
+        exit 1
+    fi
+
+    echo -e "❄️ Flake inputs are up-to-date.\n"
+fi
+
+
+# Check if changes are present
+
+if git diff --quiet; then
+    echo -e "💤 No changes, exiting.\n"
+
+    popd > /dev/null
+    exit 0
+fi
+
+
+# NixOS rebuild
+
+sudo gum spin --spinner line --title "Rebuilding..." -- \
+    sh -c 'nixos-rebuild switch --flake . &> nixos-switch.log'
+
+if [[ $? -ne 0 ]]; then
+    echo -e "🚫 Rebuild failed, see the log for details.\n"
+
+    read -p "Press [enter] to continue..."
+    cat nixos-switch.log | gum pager
+
+    popd > /dev/null
+    exit 1
+fi
+
+echo -e "🎉 Rebuild successful!\n"
+
+
+# Show rebuild results
+
+nixos-rebuild list-generations | grep current | awk '{
+    printf "  Generation : %s\n", $1
+    printf "  Build Date : %s\n", $3 " " $4
+    printf "  NixOS Ver. : %s\n", $5
+    printf "  Kernel     : %s\n", $6
+    printf "\n"
+}'
+
+# git diff --color | gum pager
+
+popd > /dev/null

@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import subprocess
+import sys
+
+NIX_CONFIGS = "~/.dotfiles/nix"
+FLAKE_UPDATE_LOG = "flake-update.log"
+REBUILD_LOG = "nixos-switch.log"
+
+
+def update_flake():
+    """Update flake inputs and handle errors."""
+    print("\n⏳ Updating flake inputs...", end="")
+
+    try:
+        # Run `nix flake update` and capture output
+        with open(FLAKE_UPDATE_LOG, "w") as log_file:
+            subprocess.run(
+                ["nix", "flake", "update"],
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                check=True,
+            )
+        print("\r❄️ Flake inputs are up-to-date.")
+    except subprocess.CalledProcessError:
+        print("\r🚫 Flake update failed, see the log for details.\n")
+        input("Press [enter] to continue...")
+
+        # Display the log file content
+        page_file(FLAKE_UPDATE_LOG)
+
+        sys.exit(1)
+
+
+def rebuild_nixos_configuration(force: bool = False):
+    """Rebuild configuration if changes are detected or if forced."""
+
+    # Check if there are any git changes
+    result = subprocess.run(["git", "diff", "--quiet"])
+
+    if result.returncode == 0 and not force:
+        print("\n💤 No changes, exiting.\n")
+        return
+
+    print("\n⏳ Rebuilding...")
+
+    try:
+        # Run nixos-rebuild switch and capture output in a log file
+        with open(REBUILD_LOG, "w") as log_file:
+            subprocess.run(
+                ["sudo", "nixos-rebuild", "switch", "--flake", "."],
+                stdout=log_file,
+                stderr=subprocess.STDOUT,
+                check=True,
+            )
+        print("🎉 Rebuild successful!")
+        display_nixos_generation()
+    except subprocess.CalledProcessError:
+        print("🚫 Rebuild failed, see the log for details.\n")
+        input("Press [enter] to continue...")
+
+        # Display the log file content
+        page_file(REBUILD_LOG)
+
+        sys.exit(1)
+
+
+def display_nixos_generation():
+    try:
+        # Display rebuild results
+        result = subprocess.run(
+            ["nixos-rebuild", "list-generations"],
+            stdout=subprocess.PIPE,
+            text=True,
+        )
+
+        for line in result.stdout.splitlines():
+            if "current" in line:
+                parts = line.split()
+                print()
+                print(f"  Generation : {parts[0]}")
+                print(f"  Build Date : {parts[2]} {parts[3]}")
+                print(f"  NixOS Ver. : {parts[4]}")
+                print(f"  Kernel     : {parts[5]}\n")
+                break
+    except subprocess.CalledProcessError:
+        print("🚫 Failed to retrieve current generation.")
+        sys.exit(1)
+
+
+def page_file(filename: str):
+    try:
+        subprocess.run(["bat", "--paging", "always", filename])
+    except subprocess.CalledProcessError:
+        try:
+            subprocess.run(["less", filename])
+        except subprocess.CalledProcessError:
+            with open(filename, "r") as text_file:
+                print("\nLog:")
+                print(text_file.read())
+
+
+def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="NixOS helper script")
+    parser.add_argument("--update", action="store_true", help="Update flake inputs")
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Force rebuild even if no changes are detected",
+    )
+    parser.add_argument(
+        "--show-generation",
+        action="store_true",
+        help="Show current generation and exit",
+    )
+    parser.add_argument(
+        "--show-nixos-log",
+        action="store_true",
+        help="Show previous NixOS build log",
+    )
+    parser.add_argument(
+        "--show-flake-log",
+        action="store_true",
+        help="Show previous flake update log",
+    )
+    args = parser.parse_args()
+
+    if args.show_generation:
+        display_nixos_generation()
+        return
+
+    # Determine the configuration directory based on hostname
+    hostname = os.uname().nodename
+    host_dir = os.path.expanduser(f"{NIX_CONFIGS}/nixos/hosts/{hostname}")
+
+    # Change to the appropriate directory
+    try:
+        os.chdir(host_dir)
+    except FileNotFoundError:
+        print(f"Error: Configuration directory '{host_dir}' does not exist.")
+        sys.exit(1)
+
+    if args.show_flake_log:
+        page_file(FLAKE_UPDATE_LOG)
+        return
+
+    if args.show_nixos_log:
+        page_file(REBUILD_LOG)
+        return
+
+    # Track all files in the repo
+    subprocess.run(["git", "add", "-AN"])
+
+    # Update flake inputs if needed
+    if args.update:
+        update_flake()
+
+    # Rebuild NixOS configuration
+    rebuild_nixos_configuration(args.force)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+mkdir nix
+
+cat << EOF > ./nix/flake.nix
+{
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+  outputs =
+    { self, nixpkgs }:
+    let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+    in
+    {
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        packages = with pkgs; [
+        ];
+      };
+    };
+}
+EOF
+
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+	git add -f ./nix
+fi
+
+nix flake update --flake ./nix
+
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+	git rm -r --cached ./nix
+fi
+
+echo "use flake path:./nix" > .envrc
+direnv allow
