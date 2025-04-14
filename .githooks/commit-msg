@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# https://www.conventionalcommits.org/en/v1.0.0/
+PATTERN="^(chore|doc|feat|fix|refactor|style)(\(.+\))?: .+$"
+
+COMMIT_MSG=$(cat "$1")
+
+if [[ ! "$COMMIT_MSG" =~ $PATTERN ]]; then
+    echo "Error: Commit message does not follow the required format."
+    echo "Expected format: <type>([scope]): <message>"
+    exit 1
+fi

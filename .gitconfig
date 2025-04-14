@@ -1,3 +1,6 @@
+[core]
+hooksPath = ./.githooks
+
 [filter "replacements.env"]
 smudge = ./scripts/git-replacements-filter.sh smudge %f
 clean = ./scripts/git-replacements-filter.sh clean %f
