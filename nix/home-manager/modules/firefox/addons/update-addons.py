@@ -1,7 +1,8 @@
 import hashlib
 import json
 import urllib.request
-
+from functools import reduce
+from typing import Any
 
 addons = {
     "bitwarden": "bitwarden-password-manager",
@@ -31,12 +32,18 @@ def get_addon_details(pname, slug):
         "url": details["current_version"]["file"]["url"],
         "sha256": details["current_version"]["file"]["hash"].replace("sha256:", ""),
         "meta": {
-            "homepage": details.get("homepage", {}).get("url", {}).get("en-US", ""),
-            "description": details.get("summary", {}).get("en-US", ""),
+            "homepage": safe_get(details, "homepage.url.en-US"),
+            "description": safe_get(details, "summary.en-US"),
         },
     }
 
     return result
+
+
+def safe_get(dictionary: dict, dot_key: str) -> Any | None:
+    keys = dot_key.split(".")
+
+    return reduce(lambda v, k: v.get(k) if v else None, keys, dictionary)
 
 
 def get_sha256(url):
