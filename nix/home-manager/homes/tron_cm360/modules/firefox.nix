@@ -45,7 +45,7 @@ in
         # about:addons
         # about:debugging#/runtime/this-firefox
         extensions = {
-          packages = with addons; [
+          packages = with addons.packages; [
             bitwarden
             clearurls
             darkreader

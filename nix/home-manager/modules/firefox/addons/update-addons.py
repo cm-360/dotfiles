@@ -18,21 +18,21 @@ addons = {
 
 
 # https://mozilla.github.io/addons-server/topics/api/addons.html
-def get_addon_data(pname, slug):
+def get_addon_details(pname, slug):
     url = f"https://addons.mozilla.org/api/v5/addons/addon/{slug}/"
 
     with urllib.request.urlopen(url) as response:
-        data = json.loads(response.read().decode())
+        details = json.loads(response.read().decode())
 
     result = {
         "pname": pname,
-        "version": data["current_version"]["version"],
-        "addonId": data["guid"],
-        "url": data["current_version"]["file"]["url"],
-        "sha256": data["current_version"]["file"]["hash"].replace("sha256:", ""),
+        "version": details["current_version"]["version"],
+        "addonId": details["guid"],
+        "url": details["current_version"]["file"]["url"],
+        "sha256": details["current_version"]["file"]["hash"].replace("sha256:", ""),
         "meta": {
-            "homepage": data.get("homepage", {}).get("url", {}).get("en-US", ""),
-            "description": data.get("summary", {}).get("en-US", ""),
+            "homepage": details.get("homepage", {}).get("url", {}).get("en-US", ""),
+            "description": details.get("summary", {}).get("en-US", ""),
         },
     }
 
@@ -45,16 +45,16 @@ def get_sha256(url):
     with urllib.request.urlopen(url) as response:
         while chunk := response.read(8192):
             sha256_hash.update(chunk)
-    
+
     return sha256_hash.hexdigest()
 
 
-addons_data = {}
+addons_details = {}
 for pname, slug in addons.items():
     print(pname)
-    addon_data = get_addon_data(pname, slug)
-    addons_data[pname] = addon_data
+    addon_details = get_addon_details(pname, slug)
+    addons_details[pname] = addon_details
 
 
 with open("addons.json", "w") as f:
-    json.dump(addons_data, f, indent=2)
+    json.dump(addons_details, f, indent=2)

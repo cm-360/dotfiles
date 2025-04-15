@@ -3,6 +3,10 @@ let
   buildFirefoxXpiAddon = pkgs.callPackage ./build-xpi-addon.nix { };
 
   addonsJsonFile = ./addons.json;
-  addonsData = builtins.fromJSON (builtins.readFile addonsJsonFile);
+  addonsDetails = builtins.fromJSON (builtins.readFile addonsJsonFile);
+  addonsPackages = builtins.mapAttrs (_: details: buildFirefoxXpiAddon details) addonsDetails;
 in
-builtins.mapAttrs (_: addonData: buildFirefoxXpiAddon addonData) addonsData
+{
+  details = addonsDetails;
+  packages = addonsPackages;
+}
