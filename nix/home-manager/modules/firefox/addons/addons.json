@@ -1,4 +1,37 @@
 {
+  "auto-tab-discard": {
+    "pname": "auto-tab-discard",
+    "version": "0.6.7",
+    "addonId": "{c2c003ee-bd69-42a2-b0e9-6f34222cb046}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4045009/auto_tab_discard-0.6.7.xpi",
+    "sha256": "89e59b8603c444258c89a507d7126be52ad7a35e4f7b8cfbca039b746f70b5d5",
+    "meta": {
+      "homepage": "https://webextension.org/listing/tab-discard.html",
+      "description": "Increase browser speed and reduce memory load and when you have numerous open tabs."
+    }
+  },
+  "better-canvas": {
+    "pname": "better-canvas",
+    "version": "5.12.0",
+    "addonId": "{8927f234-4dd9-48b1-bf76-44a9e153eee0}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4373438/better_canvas-5.12.0.xpi",
+    "sha256": "dcec560f4099b8982c064277cdd3f35070aa22851f6fdedeb975c21b1f611d23",
+    "meta": {
+      "homepage": null,
+      "description": "Best dark mode for Canvas, plus other features"
+    }
+  },
+  "better-darker-docs": {
+    "pname": "better-darker-docs",
+    "version": "1.1.1",
+    "addonId": "batterdarkerdocs@threethan.github.io",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4190471/better_darker_docs-1.1.1.xpi",
+    "sha256": "427269938272afd2eaed49f676238b86750ee0196b89229e2c8c1ac603aaf9d0",
+    "meta": {
+      "homepage": null,
+      "description": "Gives Google Docs, Sheets, Slides, and Drawings a proper dark mode based on system theme, plus clearer text"
+    }
+  },
   "bitwarden": {
     "pname": "bitwarden",
     "version": "2025.3.2",
@@ -8,6 +41,28 @@
     "meta": {
       "homepage": "https://bitwarden.com",
       "description": "At home, at work, or on the go, Bitwarden easily secures all your passwords, passkeys, and sensitive information."
+    }
+  },
+  "buster-captcha-solver": {
+    "pname": "buster-captcha-solver",
+    "version": "3.1.0",
+    "addonId": "{e58d3966-3d76-4cd9-8552-1582fbc800c1}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4297951/buster_captcha_solver-3.1.0.xpi",
+    "sha256": "6892c4e1777b6e5480bb4224c2503b62d1cb92b49996ee9948cb746110a351d8",
+    "meta": {
+      "homepage": "https://github.com/dessant/buster#readme",
+      "description": "Save time by asking Buster to solve CAPTCHAs for you."
+    }
+  },
+  "canvasblocker": {
+    "pname": "canvasblocker",
+    "version": "1.11",
+    "addonId": "CanvasBlocker@kkapsner.de",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4413485/canvasblocker-1.11.xpi",
+    "sha256": "0479b7315ce2c195fd2fbd519c50866030083abdb6d895c1b162d52762a676ec",
+    "meta": {
+      "homepage": "https://github.com/kkapsner/CanvasBlocker/",
+      "description": "Alters some JS APIs to prevent fingerprinting."
     }
   },
   "clearurls": {
@@ -30,6 +85,61 @@
     "meta": {
       "homepage": "https://darkreader.org/",
       "description": "Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing."
+    }
+  },
+  "disable-page-visibility": {
+    "pname": "disable-page-visibility",
+    "version": "1.2resigned1",
+    "addonId": "{DEBA3021-9876-4702-89BA-42D095339A0A}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4274073/disable_page_visibility-1.2resigned1.xpi",
+    "sha256": "738d6337360bba36402c20ec4c65e3631239f01be75427b3cf2ed01de791fa3e",
+    "meta": {
+      "homepage": null,
+      "description": "This add-on disables the Page Visibility API."
+    }
+  },
+  "download-with-jdownloader": {
+    "pname": "download-with-jdownloader",
+    "version": "0.3.5",
+    "addonId": "{03e07985-30b0-4ae0-8b3e-0c7519b9bdf6}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4378755/download_with_jdownloader-0.3.5.xpi",
+    "sha256": "41b5a68c3e3c20f0d00a6493e4a5384c966e60b49e43ab5f70516d0213ec7ab0",
+    "meta": {
+      "homepage": "https://webextension.org/listing/download-with.html?from=jdownloader",
+      "description": "when activated, interrupts the built-in download manager to direct links to JDownloader"
+    }
+  },
+  "fastforward": {
+    "pname": "fastforward",
+    "version": "0.2383",
+    "addonId": "addon@fastforward.team",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4258067/fastforwardteam-0.2383.xpi",
+    "sha256": "eec6328df3df1afe2cb6a331f6907669d804235551ea766d48655f8f831caf28",
+    "meta": {
+      "homepage": "https://fastforward.team",
+      "description": "Don't waste time with compliance. Use FastForward to skip annoying URL \"shorteners\"."
+    }
+  },
+  "indie-wiki-buddy": {
+    "pname": "indie-wiki-buddy",
+    "version": "3.13.5",
+    "addonId": "{cb31ec5d-c49a-4e5a-b240-16c767444f62}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4471330/indie_wiki_buddy-3.13.5.xpi",
+    "sha256": "9aa6b5aacce9d98a26c500af73725ed81ed0702d888ed4bfac4379f54df9709b",
+    "meta": {
+      "homepage": "https://getindie.wiki/",
+      "description": "Helping you discover quality, independent wikis!\n\nWhen visiting a Fandom wiki, Indie Wiki Buddy redirects or alerts you of independent alternatives. It also filters search engine results. BreezeWiki is also supported, to reduce clutter on Fandom."
+    }
+  },
+  "librezam": {
+    "pname": "librezam",
+    "version": "1.4",
+    "addonId": "Librezam@Librezam",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4367371/librezam-1.4.xpi",
+    "sha256": "5e568904db19b04277b7312718cd4b0f1b9a4f03979256c0cba04633af40d313",
+    "meta": {
+      "homepage": null,
+      "description": "Song recognition webextension using Shazam API"
     }
   },
   "localcdn": {
@@ -65,12 +175,34 @@
       "description": "Automatically learns to block invisible trackers."
     }
   },
+  "react-devtools": {
+    "pname": "react-devtools",
+    "version": "6.0.0",
+    "addonId": "@react-devtools",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4360002/react_devtools-6.0.0.xpi",
+    "sha256": "ed862b7bc65fc67a2cac53c3e4607ab9e54f4871656b048dcc42f49f613a0664",
+    "meta": {
+      "homepage": "https://github.com/facebook/react",
+      "description": "React Developer Tools is a tool that allows you to inspect a React tree, including the component hierarchy, props, state, and more. To get started, just open the Firefox devtools and switch to the \"\u269b\ufe0f Components\" or \"\u269b\ufe0f Profiler\" tab."
+    }
+  },
+  "return-youtube-dislike": {
+    "pname": "return-youtube-dislike",
+    "version": "3.0.0.18",
+    "addonId": "{762f9885-5a13-4abd-9c77-433dcd38b8fd}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4371820/return_youtube_dislikes-3.0.0.18.xpi",
+    "sha256": "2d33977ce93276537543161f8e05c3612f71556840ae1eb98239284b8f8ba19e",
+    "meta": {
+      "homepage": null,
+      "description": "Returns ability to see dislike statistics on youtube"
+    }
+  },
   "simple-tab-groups": {
     "pname": "simple-tab-groups",
-    "version": "5.3.1",
+    "version": "5.3.2",
     "addonId": "simple-tab-groups@drive4ik",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4445799/simple_tab_groups-5.3.1.xpi",
-    "sha256": "119713d6f7ddce4fee3d309b67c3644b595300d7523a72efe0ffd585c6d17dc6",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4469818/simple_tab_groups-5.3.2.xpi",
+    "sha256": "efebf6a9f73a1747044624ddbad7a78fd90ffccdb34a426cf6bb555eda307c49",
     "meta": {
       "homepage": "https://github.com/drive4ik/simple-tab-groups",
       "description": "Create, modify, and quickly change tab groups"
@@ -85,6 +217,28 @@
     "meta": {
       "homepage": "https://add0n.com/stylus.html",
       "description": "Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets."
+    }
+  },
+  "tampermonkey": {
+    "pname": "tampermonkey",
+    "version": "5.3.3",
+    "addonId": "firefox@tampermonkey.net",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4405733/tampermonkey-5.3.3.xpi",
+    "sha256": "1eb5ddffb3b93c0258ef0458658436563772d21bf5dffa334bb8a49cca8f0fff",
+    "meta": {
+      "homepage": "https://tampermonkey.net",
+      "description": "Tampermonkey is the world's most popular userscript manager."
+    }
+  },
+  "temporary-containers": {
+    "pname": "temporary-containers",
+    "version": "1.9.2",
+    "addonId": "{c607c8df-14a7-4f28-894f-29e8722976af}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/3723251/temporary_containers-1.9.2.xpi",
+    "sha256": "3340a08c29be7c83bd0fea3fc27fde71e4608a4532d932114b439aa690e7edc0",
+    "meta": {
+      "homepage": "https://github.com/stoically/temporary-containers",
+      "description": "Open tabs, websites, and links in automatically managed disposable containers which isolate the data websites store (cookies, storage, and more) from each other, enhancing your privacy and security while you browse."
     }
   },
   "terms-of-service-didnt-read": {
@@ -107,6 +261,28 @@
     "meta": {
       "homepage": "https://github.com/gorhill/uBlock#ublock-origin",
       "description": "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory."
+    }
+  },
+  "user-agent-string-switcher": {
+    "pname": "user-agent-string-switcher",
+    "version": "0.5.0",
+    "addonId": "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4098688/user_agent_string_switcher-0.5.0.xpi",
+    "sha256": "9dc8da3c8c46d4f04d12fd789c63501fa6a2f502f859b286939a090db63eae33",
+    "meta": {
+      "homepage": "http://add0n.com/useragent-switcher.html",
+      "description": "Spoof websites trying to gather information about your web navigation\u2014like your browser type and operating system\u2014to deliver distinct content you may not want."
+    }
+  },
+  "youtube-for-tv": {
+    "pname": "youtube-for-tv",
+    "version": "0.0.3",
+    "addonId": "{d2bcedce-889b-4d53-8ce9-493d8f78612a}",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/3420768/youtube_for_tv-0.0.3.xpi",
+    "sha256": "5df6bb701e03d08c9f7b1e72f7f8d147dde0524ce2688ca3a8c4f42c83a14faa",
+    "meta": {
+      "homepage": null,
+      "description": "Allows youtube.com/tv to load YouTube TV App from regular browser."
     }
   }
 }
