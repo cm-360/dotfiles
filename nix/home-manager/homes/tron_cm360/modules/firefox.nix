@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   addons = pkgs.callPackage ../../../modules/firefox/addons { };
 in
@@ -310,6 +310,103 @@ in
           # - firefox-compact-dark@mozilla.org
           # - firefox-compact-light@mozilla.org
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+
+          # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
+          "browser.uiCustomization.state" =
+            let
+              browserAction =
+                addonInfo:
+                let
+                  sanitizedId = builtins.replaceStrings [ " " ] [ "_" ] (
+                    builtins.toString (builtins.split "[^a-z0-9\-]" (lib.toLower addonInfo.addonId))
+                  );
+                in
+                sanitizedId + "-browser-action";
+
+              addonActions = builtins.mapAttrs (name: details: (browserAction details)) addons.details;
+            in
+            builtins.toJSON {
+              placements = {
+                nav-bar = [
+                  # Navigation
+                  "back-button"
+                  "forward-button"
+                  "stop-reload-button"
+                  "home-button"
+                  # Address bar
+                  "customizableui-special-spring1"
+                  "vertical-spacer"
+                  "urlbar-container"
+                  "customizableui-special-spring2"
+                  # Toolbar
+                  "downloads-button"
+                  # "fxa-toolbar-menu-button" # Account
+                  "unified-extensions-button"
+                  addonActions.bitwarden
+                  addonActions.simple-tab-groups
+                ];
+                PersonalToolbar = [ "personal-bookmarks" ];
+                TabsToolbar = [
+                  "firefox-view-button"
+                  "tabbrowser-tabs"
+                  "new-tab-button"
+                  "alltabs-button"
+                  addonActions.temporary-containers
+                ];
+                toolbar-menubar = [ "menubar-items" ];
+                unified-extensions-area = [
+                  # Ad-blocking / privacy
+                  addonActions.ublock-origin
+                  addonActions.privacy-badger
+                  addonActions.clearurls
+                  addonActions.localcdn
+                  # Styling
+                  addonActions.darkreader
+                  addonActions.stylus
+                  # Miscellaneous
+                  addonActions.terms-of-service-didnt-read
+                  addonActions.librezam
+                ];
+                vertical-tabs = [ ];
+                widget-overflow-fixed-list = [ ];
+              };
+
+              # Remembers which widgets have been seen before so new widgets
+              # can be put in their default location.
+              # See: gSeenWidgets in CustomizableUI.sys.mjs
+              seen =
+                [
+                  "developer-button"
+                  "save-to-pocket-button"
+                ]
+                ++ (
+                  # Mark all known extension actions as seen
+                  let
+                    actionsList = lib.attrsToList addonActions;
+                    actionsValues = map (entry: entry.value) actionsList;
+                  in
+                  actionsValues
+                );
+
+              # Set of area IDs where items have been added, moved, or removed
+              # at least once to optimize building default toolbars.
+              # See: gDirtyAreaCache in CustomizableUI.sys.mjs
+              dirtyAreaCache = [
+                "nav-bar"
+                "vertical-tabs"
+                "PersonalToolbar"
+                "toolbar-menubar"
+                "TabsToolbar"
+                "unified-extensions-area"
+              ];
+
+              # Used to migrate customization state for current version.
+              # See: currentVersion and kVersion in CustomizableUI.sys.mjs
+              currentVersion = 21;
+
+              # TODO: determine meaning/usage
+              # newElementCount = 6;
+            };
 
           # Simple Tab Groups
           "svg.context-properties.content.enabled" = true;
