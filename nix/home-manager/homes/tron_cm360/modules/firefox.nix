@@ -69,6 +69,12 @@ in
 
           # LocalCDN
           # - Don't block Google Fonts on Google pages
+
+          # ~/.mozilla/firefox/<profile>/extension-preferences.json
+          # TODO: custom activation script
+          # https://mynixos.com/home-manager/option/home.activation
+          # preferences = {
+          # };
         };
 
         # ~/.mozilla/firefox/<profile>/search.json.mozlz4
