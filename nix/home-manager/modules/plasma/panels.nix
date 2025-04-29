@@ -24,6 +24,7 @@
               Appearance = {
                 chartFace = "org.kde.ksysguard.colorgrid";
                 title = "CPU Usage";
+                updateRateLimit = 2000;
               };
             };
           }
@@ -33,6 +34,7 @@
               Appearance = {
                 chartFace = "org.kde.ksysguard.colorgrid";
                 title = "Memory Usage";
+                updateRateLimit = 2000;
               };
             };
           }
