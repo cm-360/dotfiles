@@ -1,71 +1,75 @@
 {
-    "editor.linkedEditing": true,
-    "editor.minimap.enabled": true,
+    // ----- Appearance -----
+
+    "editor.bracketPairColorization.enabled": true,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.bracketPairColorization.enabled": true,
-    "workbench.colorTheme": "Atom One Dark",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.productIconTheme": "material-product-icons",
     "editor.fontFamily": "'Fira Code', 'monospace', monospace",
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
-    "tinymist.formatterMode": "typstyle",
-    "[javascript]": {
-        "editor.tabSize": 2,
+    "editor.minimap.enabled": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+
+    // ----- Behavior -----
+
+    "editor.linkedEditing": true,
+    "editor.formatOnSaveMode": "file",
+    "files.trimTrailingWhitespace": true,
+
+    // ----- Languages -----
+
+    // HTML/CSS/JS, React, Svelte
+    "[html][css][javascript][javascriptreact][typescript][typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
+        "editor.tabSize": 2
     },
-    "[javascriptreact]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode",
         "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
-    },
-    "[typescript]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
-    },
-    "[typescriptreact]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
-    },
-    "[css]": {
-        "editor.tabSize": 2,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.formatOnSaveMode": "file"
+        "editor.insertSpaces": false,
+        "editor.tabSize": 2
     },
     "svelte.enable-ts-plugin": true,
-    "[svelte]": {
-        "editor.tabSize": 2,
+
+    // Go
+    "[go]": {
+        "editor.defaultFormatter": "golang.go",
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "svelte.svelte-vscode",
-        "editor.formatOnSaveMode": "file"
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4
     },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "go.toolsManagement.autoUpdate": true,
+
+    // Nix
+    "[nix]": {
+        "editor.defaultFormatter": "jnoortheen.nix-ide",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
     },
+
+    // Python, Jupyter
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true
+    },
+    "ruff.importStrategy": "fromEnvironment",
+    "notebook.lineNumbers": "on",
+    "notebook.formatOnSave.enabled": true,
+    "notebook.defaultFormatter": "charliermarsh.ruff",
+
+    // Typst
     "[typst]": {
-        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+        "files.trimTrailingWhitespace": true
     },
     "[typst-code]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
-    "[nix]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.formatOnSave": true
-    },
-    "[python]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
-    "ruff.importStrategy": "fromEnvironment",
-    "notebook.lineNumbers": "on"
+    "tinymist.formatterMode": "typstyle"
 }
