@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-mkdir nix
+DEVSHELL_PATH=./.nix-shell
 
-cat << EOF > ./nix/flake.nix
+mkdir "$DEVSHELL_PATH"
+
+cat << EOF > "$DEVSHELL_PATH/flake.nix"
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -24,14 +26,14 @@ cat << EOF > ./nix/flake.nix
 EOF
 
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-	git add -f ./nix
+	git add -f "$DEVSHELL_PATH"
 fi
 
-nix flake update --flake ./nix
+nix flake update --flake "$DEVSHELL_PATH"
 
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-	git rm -r --cached ./nix
+	git rm -r --cached "$DEVSHELL_PATH"
 fi
 
-echo "use flake path:./nix" > .envrc
+echo "use flake path:$DEVSHELL_PATH" > .envrc
 direnv allow
