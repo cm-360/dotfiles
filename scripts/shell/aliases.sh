@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias dotfiles-update="$DOTFILES/update.sh"
+alias dotfiles-update="$DOTFILES/install.sh"
 
 alias ls="eza"
 alias l="eza -l"
