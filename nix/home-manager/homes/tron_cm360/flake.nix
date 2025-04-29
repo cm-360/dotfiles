@@ -13,8 +13,8 @@
       inputs.home-manager.follows = "home-manager";
     };
     mpris-discord-rpc = {
-      url = "git+file:///home/cm360/Projects/mpris-discord-rpc";
-      # url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
+      # url = "git+file:///home/cm360/Projects/mpris-discord-rpc";
+      url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
