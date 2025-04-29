@@ -30,9 +30,11 @@
     # gimp
     inkscape
     kdePackages.filelight
+    kdePackages.kdenlive
     krita
     # libreoffice-qt6-fresh
     obsidian
+    obs-studio
     picard
     qalculate-qt
     qbittorrent
@@ -71,7 +73,7 @@
     # Development utilities
     android-studio
     android-tools
-    godot_4
+    godot_4_3
     # jetbrains.idea-ultimate
     # unityhub
     vscodium
@@ -85,6 +87,7 @@
     python313
     python313Packages.python-lsp-server
     python313Packages.ruff # Python formatter
+    python313Packages.uv # Python package manager
     typst
     tinymist # Typst language server
     typescript-language-server
