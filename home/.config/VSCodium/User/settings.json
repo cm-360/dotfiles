@@ -73,13 +73,25 @@
 
     // Typst
     "[typst]": {
-        "editor.tabSize": 2,
+        "editor.defaultFormatter": "jkillian.custom-local-formatters",
+        "editor.formatOnSave": true,
         "editor.insertSpaces": true,
+        "editor.tabSize": 2,
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
         "files.trimTrailingWhitespace": true
     },
     "[typst-code]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
-    "tinymist.formatterMode": "typstyle"
+
+    // ----- Formatters -----
+
+    "customLocalFormatters.formatters": [
+        {
+            "command": "prettypst --use-std-in --use-std-out --file-location=${file}",
+            "languages": [
+                "typst",
+            ]
+        }
+    ]
 }

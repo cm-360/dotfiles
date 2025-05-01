@@ -84,12 +84,13 @@
     nixfmt-rfc-style
     go
     gopls # Go language server
+    prettypst # Typst formatter, https://github.com/antonWetzel/prettypst
     python313
     python313Packages.python-lsp-server
     python313Packages.ruff # Python formatter
     python313Packages.uv # Python package manager
-    typst
     tinymist # Typst language server
+    typst
     typescript-language-server
     vscode-langservers-extracted # CSS/ESLint/HTML/JSON/Markdown
   ];
