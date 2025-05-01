@@ -50,6 +50,16 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nil",
+    "nix.serverSettings": {
+        // https://github.com/oxalica/nil/blob/main/docs/configuration.md
+        "nil": {
+            "formatting": {
+                "command": ["nixfmt"],
+            },
+        },
+    },
 
     // Python, Jupyter
     "[python]": {
