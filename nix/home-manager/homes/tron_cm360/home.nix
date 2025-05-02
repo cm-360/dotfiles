@@ -118,7 +118,12 @@
     "L %h/.local/share/suyu - - - - /data/cm360/Games/Consoles/Switch/Yuzu"
   ];
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   services.kdeconnect.enable = true;
   services.mpris-discord-rpc.enable = true;
   services.syncthing.enable = true;
