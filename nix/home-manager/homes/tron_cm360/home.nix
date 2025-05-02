@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-
+{ pkgs, ... }:
 {
   imports = [
     ./modules/firefox.nix
@@ -76,7 +75,6 @@
     godot_4_3
     # jetbrains.idea-ultimate
     # unityhub
-    vscodium
 
     # Languages
     bash-language-server

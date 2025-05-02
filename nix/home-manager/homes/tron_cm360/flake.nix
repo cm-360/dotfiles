@@ -17,6 +17,9 @@
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+    };
   };
 
   outputs =
@@ -25,6 +28,7 @@
       home-manager,
       plasma-manager,
       mpris-discord-rpc,
+      nix-vscode-extensions,
       ...
     }:
     let
@@ -36,7 +40,9 @@
         "${username}" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ ];
+            overlays = [
+              nix-vscode-extensions.overlays.default
+            ];
           };
 
           modules = [
