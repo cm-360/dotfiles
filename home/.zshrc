@@ -1,6 +1,7 @@
 # https://stevenvanbael.com/profiling-zsh-startup
 # zmodload zsh/zprof
 
+
 ########## Oh My Zsh Configuration ##########
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki
@@ -12,9 +13,9 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="lukerandall"
 
 # Completion behavior
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="false"
 # Make _ and - interchangeable, case-sensitive must be off
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 # Display red dots while waiting for completion (or a custom string)
 COMPLETION_WAITING_DOTS="true"
 
@@ -22,18 +23,22 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+#   disabled: disable automatic updates
+#   auto:     update automatically without asking
+#   reminder: just remind me to update when it's time
+zstyle ':omz:update' mode auto
 # Auto-update interval in days
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 14
 
-# Uncomment the following line if pasting URLs and other text is messed up.
+# Uncomment if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # History time format
-# "mm/dd/yyyy", "dd.mm.yyyy", "yyyy-mm-dd", or 'man strftime' for custom
-# HIST_STAMPS="mm/dd/yyyy"
+# "mm/dd/yyyy", "dd.mm.yyyy", "yyyy-mm-dd", or see `man strftime`
+HIST_STAMPS="yyyy-mm-dd"
+
+
+########## Oh My Zsh Plugins ##########
 
 # https://unix.stackexchange.com/a/777123
 # Function to install a oh-my-zsh plugin if it doesn't exist
@@ -68,14 +73,8 @@ ensure_omz_resource "plugins" \
     "zsh-syntax-highlighting" \
     "https://github.com/zsh-users/zsh-syntax-highlighting"
 
-# direnv - Auto directory-specific subshells/environments
-# https://github.com/direnv/direnv
-# https://github.com/nix-community/nix-direnv
-
-# zoxide - A smarter cd command
-# https://github.com/ajeetdsouza/zoxide
-
-# Plugins are in $ZSH/plugins and $ZSH_CUSTOM/plugins
+# $ZSH/plugins
+# $ZSH_CUSTOM/plugins
 plugins=(
     # Shell features
     autoupdate
@@ -90,15 +89,19 @@ plugins=(
     tmux
 
     # Suggestions & highlighting
-#     alias-tips
+    alias-tips
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
+# direnv - Auto directory-specific subshells/environments
+# https://github.com/direnv/direnv
 if which direnv > /dev/null; then
     plugins+=(direnv)
 fi
 
+# zoxide - A smarter cd command
+# https://github.com/ajeetdsouza/zoxide
 if which zoxide > /dev/null; then
     plugins+=(zoxide)
 fi
