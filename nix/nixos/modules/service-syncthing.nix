@@ -4,11 +4,11 @@
   # 21027/UDP for discovery
   # source: https://docs.syncthing.net/users/firewall.html
   networking.firewall.allowedTCPPorts = [
-# 	8384	# Web GUI
-	22000	# Sync traffic
+    # 8384	# Web GUI
+    22000 # Sync traffic
   ];
   networking.firewall.allowedUDPPorts = [
-	22000	# Sync traffic
-	21027	# Discovery
+    22000 # Sync traffic
+    21027 # Discovery
   ];
 }
