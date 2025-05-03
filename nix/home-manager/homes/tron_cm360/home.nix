@@ -8,6 +8,7 @@
     ../../modules/direnv.nix
     ../../modules/gpg.nix
     ../../modules/plasma
+    ../../modules/vscodium.nix
   ];
 
   nix = {
