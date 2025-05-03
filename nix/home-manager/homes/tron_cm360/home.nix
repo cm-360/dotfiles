@@ -96,8 +96,8 @@
   ];
 
   nixpkgs.overlays = [
-    (import ./overlays/obsidian-wayland.nix)
-    (import ./overlays/vesktop-icon.nix)
+    (import ../../../overlays/obsidian-wayland-fix.nix)
+    (import ../../../overlays/vesktop-discord-icon.nix)
     (final: prev: {
       # TODO: fix (I have no idea how to do this)
       # Do it for them: https://discourse.nixos.org/t/patching-chromium-from-nixpkgs/12302
