@@ -6,8 +6,8 @@
 
     ../../modules/desktop.nix
     ../../modules/direnv.nix
+    ../../modules/gpg.nix
     ../../modules/plasma
-    ../../modules/service-gpg.nix
   ];
 
   nix = {
