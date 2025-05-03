@@ -1,6 +1,4 @@
 {
-  time.timeZone = "America/New_York";
-
   # Internationalisation properties
   i18n.defaultLocale = "en_US.UTF-8";
 

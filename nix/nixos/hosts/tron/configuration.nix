@@ -1,33 +1,38 @@
 { pkgs, ... }:
-
 {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-
+    # Common configuration
     ../../modules/profiles/laptop.nix
+    ../../modules/users/cm360.nix
 
-    ../../modules/desktop-plasma6.nix
-    ../../modules/service-docker.nix
-    ../../modules/service-libvirtd.nix
-    ../../modules/service-syncthing.nix
-    ../../modules/service-tailscale.nix
-    ../../modules/software-steam.nix
-
+    # Boot / Hardware
+    ./hardware-configuration.nix
     ./modules/boot.nix
     ./modules/hardware-keyboard.nix
     ./modules/hardware-nvidia.nix
-  ];
 
-  environment.systemPackages = with pkgs; [
+    # Additional modules
+    ../../modules/desktop-plasma6.nix
+    ../../modules/docker.nix
+    ../../modules/firewall-syncthing.nix
+    ../../modules/libvirt.nix
+    ../../modules/steam.nix
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  users.users.cm360.extraGroups = [ "docker" ];
+  environment.systemPackages = with pkgs; [
+  ];
 
   networking.firewall.allowedTCPPorts = [
     8080
+  ];
+
+  services.tailscale.enable = true;
+
+  users.users.cm360.extraGroups = [
+    "docker"
+    "libvirtd"
   ];
 
   # This value determines the NixOS release from which the default

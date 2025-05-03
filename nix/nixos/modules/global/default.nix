@@ -1,13 +1,11 @@
 { pkgs, ... }:
-
 {
   imports = [
-    ./options.nix
-    ./packages.nix
-    ../security-sudo.nix
-    ../service-gpg.nix
-    ../service-network.nix
-    ../service-ssh.nix
+    ./gpg.nix
+    ./locale.nix
+    ./network.nix
+    ./ssh.nix
+    ./sudo.nix
   ];
 
   nix.settings.experimental-features = [
@@ -17,14 +15,21 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  users.users.cm360 = {
-    isNormalUser = true;
-    description = "CM360";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+  environment.systemPackages = with pkgs; [
+    # Command line utilities
+    htop
+    git
+    tmux
+    wget
 
-    shell = pkgs.zsh;
-  };
+    # Hardware utilities
+    lshw
+
+    exfatprogs
+
+    man-pages
+    man-pages-posix
+  ];
+
+  programs.zsh.enable = true;
 }

@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   # Define a custom background package
   # https://discourse.nixos.org/t/sddm-background-on-default-theme/46263/3
@@ -34,7 +33,6 @@ in
     '')
   ];
 
-  # Firewall configuration
   networking.firewall = {
     allowedTCPPortRanges = [
       {
