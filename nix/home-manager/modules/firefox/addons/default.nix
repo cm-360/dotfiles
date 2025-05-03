@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  buildFirefoxXpiAddon = pkgs.callPackage ./build-xpi-addon.nix { };
+  buildFirefoxXpiAddon = import ./build-xpi-addon.nix { inherit lib pkgs; };
 
   addonsJsonFile = ./addons.json;
   addonsDetails = builtins.fromJSON (builtins.readFile addonsJsonFile);
