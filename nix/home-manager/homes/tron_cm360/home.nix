@@ -8,6 +8,7 @@
     ../../modules/direnv.nix
     ../../modules/gpg.nix
     ../../modules/plasma
+    ../../modules/spicetify.nix
     ../../modules/vscodium.nix
   ];
 
@@ -39,7 +40,6 @@
     picard
     qalculate-qt
     qbittorrent
-    spotify
     thunderbird-latest
     tor-browser
     ungoogled-chromium

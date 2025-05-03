@@ -20,17 +20,18 @@
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
-      plasma-manager,
-      mpris-discord-rpc,
-      nix-vscode-extensions,
       ...
-    }:
+    }@inputs:
     let
       username = "cm360";
       system = "x86_64-linux";
@@ -41,13 +42,17 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
-              nix-vscode-extensions.overlays.default
+              inputs.nix-vscode-extensions.overlays.default
+              (final: prev: {
+                spicetifyPackages = inputs.spicetify-nix.legacyPackages.${system};
+              })
             ];
           };
 
           modules = [
-            plasma-manager.homeManagerModules.plasma-manager
-            mpris-discord-rpc.homeManagerModules.default
+            inputs.plasma-manager.homeManagerModules.plasma-manager
+            inputs.mpris-discord-rpc.homeManagerModules.default
+            inputs.spicetify-nix.homeManagerModules.spicetify
 
             ./home.nix
 
