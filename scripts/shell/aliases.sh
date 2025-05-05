@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-alias dotfiles-update="$DOTFILES/install.sh"
-
-alias ls="eza"
-alias l="eza -l"
-alias la="eza -la"
-alias laa="eza -laa"
+if which eza > /dev/null; then
+    alias ls="eza"
+    alias l="eza -l"
+    alias la="eza -la"
+    alias laa="eza -laa"
+fi
 
 alias bai="shutdown now"
 alias cya="reboot"
@@ -17,5 +17,5 @@ alias adb-shizuku="adb shell sh /storage/emulated/0/Android/data/moe.shizuku.pri
 alias adb-automate="adb shell sh /sdcard/Android/data/com.llamalab.automate/cache/start.sh"
 
 nix-run() {
-  nix run nixpkgs#"$1" -- "${@:2}"
+    nix run nixpkgs#"$1" -- "${@:2}"
 }
