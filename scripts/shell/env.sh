@@ -20,11 +20,6 @@ if which nix-user-chroot > /dev/null && [ -z "$_NIX_USER_CHROOT_ACTIVE" ]; then
     exec "$HOME/.local/bin/nix-user-chroot" "$HOME/.nix" "$SHELL"
 fi
 
-# Include Nix config scripts if available
-if [ -d "$HOME/.nixos-configs/scripts" ]; then
-    export PATH="$HOME/.nixos-configs/scripts:$PATH"
-fi
-
 # Change Go path to hidden directory
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
