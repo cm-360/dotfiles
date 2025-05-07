@@ -136,4 +136,12 @@ bindkey '^H' backward-kill-word
 
 . ~/.dotfiles/scripts/shell/aliases.sh
 
+# For Termux on Android
+if [ "$(uname -o)" = "Android" ]; then
+    if ! pidof sshd > /dev/null; then
+        echo "Starting sshd..."
+        sshd
+    fi
+fi
+
 # zprof
