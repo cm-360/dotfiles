@@ -12,12 +12,14 @@ yes | pkg update && pkg upgrade
 pkg install -y \
     bat \
     eza \
+    fastfetch \
     git \
     openssh \
     python-pip \
     python3 \
     tmux \
     which \
+    zoxide \
     zsh
 
 
