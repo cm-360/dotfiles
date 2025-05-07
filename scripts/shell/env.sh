@@ -56,12 +56,16 @@ if which ksshaskpass > /dev/null; then
 fi
 
 
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-    . "$HOME/.nix-profile/etc/profile.d/nix.sh";
+########## Nix Environments ##########
+
+# Source environment from Nix system profile
+NIX_PROFILE_SCRIPT="$HOME/.nix-profile/etc/profile.d/nix.sh"
+if [ -e "$NIX_PROFILE_SCRIPT" ]; then
+    . "$NIX_PROFILE_SCRIPT";
 fi
 
-# Source env variables from home-manager
-if [ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+# Source environment from Home Manager profile
+HM_PROFILE_SCRIPT="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+if [ -e "$HM_PROFILE_SCRIPT" ]; then
+    . "$HM_PROFILE_SCRIPT"
 fi
-
