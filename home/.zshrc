@@ -84,20 +84,34 @@ plugins=(
     common-aliases
     git
     gitignore
-    nvm
-    poetry
-    tmux
 
     # Suggestions & highlighting
-    alias-tips
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+# alias-tips - Shows command alias reminders (requires Python 3)
+# https://github.com/djui/alias-tips
+if which python3 > /dev/null; then
+    plugins+=(alias-tips)
+fi
 
 # direnv - Auto directory-specific subshells/environments
 # https://github.com/direnv/direnv
 if which direnv > /dev/null; then
     plugins+=(direnv)
+fi
+
+# Poetry - Python dependency manager
+# https://python-poetry.org/
+if which poetry > /dev/null; then
+    plugins+=(poetry)
+fi
+
+# tmux - Terminal multiplexer
+# https://github.com/tmux/tmux
+if which tmux > /dev/null; then
+    plugins+=(tmux)
 fi
 
 # zoxide - A smarter cd command
