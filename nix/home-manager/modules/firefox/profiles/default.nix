@@ -38,14 +38,28 @@ in
   # about:debugging#/runtime/this-firefox
   extensions = {
     packages = with addons.packages; [
+      # TODO: replace any with userscripts?
+      auto-tab-discard
+      better-canvas
+      better-darker-docs
       bitwarden
+      buster-captcha-solver
+      canvasblocker
       clearurls
       darkreader
+      disable-page-visibility
+      download-with-jdownloader
+      fastforward
+      indie-wiki-buddy
+      librezam
       localcdn
       plasma-integration
       privacy-badger
+      return-youtube-dislike
       simple-tab-groups
       stylus
+      tampermonkey
+      temporary-containers
       terms-of-service-didnt-read
       ublock-origin
     ];
