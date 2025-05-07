@@ -1,2 +1,3 @@
 /replacements.env
 *.log
+/home/.ssh/config-hosts
