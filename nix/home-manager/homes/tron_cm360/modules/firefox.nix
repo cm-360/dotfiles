@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 let
   defaultProfile = import ../../../modules/firefox/profiles/default.nix { inherit lib pkgs; };
+  secondaryProfile = import ../../../modules/firefox/profiles/secondary.nix { inherit lib pkgs; };
 in
 {
   # https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
@@ -14,6 +15,7 @@ in
 
     profiles = {
       default = defaultProfile;
+      secondary = secondaryProfile;
     };
   };
 }
