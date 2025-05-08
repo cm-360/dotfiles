@@ -13,17 +13,19 @@
   };
 
   home.packages = with pkgs; [
-    beets
-
-    python3
-
-    # Command line utilities
     bat
+    beets
+    ccze
     eza
     fastfetch
-    gum
+    ffmpeg
+    fx
+    jq
+    p7zip
+    python313
     ripgrep
     tree
+    yt-dlp
     zoxide
   ];
 
