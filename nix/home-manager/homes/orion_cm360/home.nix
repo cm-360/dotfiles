@@ -1,8 +1,7 @@
 { pkgs, ... }:
-
 {
   imports = [
-    ../../modules/service-gpg.nix
+    ../../modules/gpg.nix
   ];
 
   nix = {
