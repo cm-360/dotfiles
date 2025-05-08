@@ -1,25 +1,18 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, lib, ... }:
-
+{ pkgs, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
-
+    # Common configuration
     ../../modules/profiles/server.nix
+    ../../modules/users/cm360.nix
 
-    ../../modules/service-docker.nix
-    ../../modules/service-libvirtd.nix
-    ../../modules/service-tailscale.nix
-
+    # Boot / Hardware
+    ./hardware-configuration.nix
     ./modules/boot.nix
+
+    # Additional modules
+    ../../modules/docker.nix
+    ../../modules/libvirt.nix
   ];
-
-  networking.hostName = "orion";
-
-  time.timeZone = lib.mkForce "UTC";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -31,8 +24,14 @@
     443
   ];
 
+  services.tailscale.enable = true;
+
   # Fix for https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = false;
+
+  users.users.cm360.extraGroups = [
+    "libvirtd"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
