@@ -55,6 +55,7 @@
 
     # Command line utilities
     bat
+    ccze # Log colorizer, https://github.com/cornet/ccze
     csvlens
     eza # ls replacement https://github.com/eza-community/eza
     fastfetch
