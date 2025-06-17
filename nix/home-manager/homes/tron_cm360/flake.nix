@@ -42,6 +42,7 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
+              (import ../../../packages)
               inputs.nix-vscode-extensions.overlays.default
               (final: prev: {
                 spicetifyPackages = inputs.spicetify-nix.legacyPackages.${system};
