@@ -26,6 +26,7 @@
     # GUI apps
     bitwarden-desktop
     blender
+    dbeaver-bin
     element-desktop
     feishin # Jellyfin music client
     gcolor3 # Color picker
