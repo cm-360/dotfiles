@@ -22,5 +22,8 @@
     };
   };
 
+  # https://discourse.nixos.org/t/having-an-issue-with-virt-manager-not-allowing-usb-passthrough/6272
+  virtualisation.spiceUSBRedirection.enable = true;
+
   programs.virt-manager.enable = true;
 }
