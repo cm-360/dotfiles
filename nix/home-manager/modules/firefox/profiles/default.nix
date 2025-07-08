@@ -31,6 +31,11 @@ in
       color = "green";
       icon = "tree";
     };
+    "Work" = {
+      id = 4;
+      color = "red";
+      icon = "briefcase";
+    };
   };
   containersForce = true;
 
