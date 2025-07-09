@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
 
     ../../modules/profiles/server.nix
+    ../../modules/users/cm360.nix
 
     ../../modules/docker.nix
 
