@@ -11,7 +11,7 @@
 
     ../../modules/profiles/server.nix
 
-    ../../modules/service-docker.nix
+    ../../modules/docker.nix
 
     ./modules/boot.nix
     ./modules/hardware-nvidia.nix
