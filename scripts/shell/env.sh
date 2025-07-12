@@ -24,6 +24,9 @@ fi
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
+# Prevent creation of `R` directory in $HOME
+# https://stackoverflow.com/a/64042444
+export R_LIBS_USER="${XDG_DATA_HOME:-$HOME/.local/share}/R/%p-library/%v"
 
 ########## Miscellaneous ##########
 
