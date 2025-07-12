@@ -5,7 +5,7 @@
     package = pkgs.vscodium;
 
     # https://github.com/nix-community/nix-vscode-extensions
-    extensions =
+    profiles.default.extensions =
       # https://marketplace.visualstudio.com/vscode
       (with pkgs.vscode-marketplace; [
         ms-python.python
