@@ -36,7 +36,7 @@
     kdePackages.filelight
     kdePackages.kdenlive
     krita
-    # libreoffice-qt6-fresh
+    libreoffice-qt6-fresh
     obsidian
     obs-studio
     picard
