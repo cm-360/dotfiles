@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if which eza > /dev/null; then
+if command -v eza > /dev/null 2>&1; then
     alias ls="eza"
     alias l="eza -l"
     alias la="eza -la"

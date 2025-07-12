@@ -92,31 +92,31 @@ plugins=(
 
 # alias-tips - Shows command alias reminders (requires Python 3)
 # https://github.com/djui/alias-tips
-if which python3 > /dev/null; then
+if which python3 > /dev/null 2>&1; then
     plugins+=(alias-tips)
 fi
 
 # direnv - Auto directory-specific subshells/environments
 # https://github.com/direnv/direnv
-if which direnv > /dev/null; then
+if which direnv > /dev/null 2>&1; then
     plugins+=(direnv)
 fi
 
 # Poetry - Python dependency manager
 # https://python-poetry.org/
-if which poetry > /dev/null; then
+if which poetry > /dev/null 2>&1; then
     plugins+=(poetry)
 fi
 
 # tmux - Terminal multiplexer
 # https://github.com/tmux/tmux
-if which tmux > /dev/null; then
+if which tmux > /dev/null 2>&1; then
     plugins+=(tmux)
 fi
 
 # zoxide - A smarter cd command
 # https://github.com/ajeetdsouza/zoxide
-if which zoxide > /dev/null; then
+if which zoxide > /dev/null 2>&1; then
     plugins+=(zoxide)
 fi
 

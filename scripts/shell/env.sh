@@ -15,7 +15,7 @@ export PATH="$DOTFILES/scripts:$PATH"
 # Enter Nix user chroot if available
 # https://github.com/nix-community/nix-user-chroot
 # https://nixos.wiki/wiki/Nix_Installation_Guide#nix-user-chroot
-if which nix-user-chroot > /dev/null && [ -z "$_NIX_USER_CHROOT_ACTIVE" ]; then
+if command -v nix-user-chroot > /dev/null 2>&1 && [ -z "$_NIX_USER_CHROOT_ACTIVE" ]; then
     export _NIX_USER_CHROOT_ACTIVE=1
     exec "$HOME/.local/bin/nix-user-chroot" "$HOME/.nix" "$SHELL"
 fi
@@ -40,7 +40,7 @@ export GTK_USE_PORTAL=1
 export DIRENV_LOG_FORMAT=
 
 # Use bat as the man pager (if available)
-if which bat > /dev/null; then
+if command -v bat > /dev/null 2>&1; then
     # https://github.com/sharkdp/bat/issues/1731
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
     export MANROFFOPT="-c"
@@ -50,8 +50,8 @@ fi
 # export ZSH_TMUX_AUTOSTART=true
 
 # Prefer KSSHAskPass for ssh-add
-if which ksshaskpass > /dev/null; then
-    export SSH_ASKPASS="$(which ksshaskpass)"
+if command -v ksshaskpass > /dev/null 2>&1; then
+    export SSH_ASKPASS="$(command -v ksshaskpass)"
     export SSH_ASKPASS_REQUIRE="prefer"
 fi
 
