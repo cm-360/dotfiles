@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
 
     ../../modules/profiles/laptop.nix
+    ../../modules/users/cm360.nix
 
     ../../modules/desktop-gnome.nix
   ];
