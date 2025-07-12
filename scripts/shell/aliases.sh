@@ -13,7 +13,8 @@ alias cya="reboot"
 alias ip="ip --color=auto"
 alias fastfetch="fastfetch -c paleofetch.jsonc"
 
-alias adb-shizuku="adb shell sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh"
+#alias adb-shizuku="adb shell sh /storage/emulated/0/Android/data/moe.shizuku.privileged.api/start.sh"
+alias adb-shizuku="adb shell /data/app/~~xcFWMucY7HgQlOOf7yyoGw==/moe.shizuku.privileged.api-UviotepBCAYoAPXjk7LDmA==/lib/arm64/libshizuku.so"
 alias adb-automate="adb shell sh /sdcard/Android/data/com.llamalab.automate/cache/start.sh"
 
 nix-run() {
