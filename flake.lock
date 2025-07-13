@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "ca-certs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752433275,
+        "narHash": "sha256-TTNXRq7kYJFx02WTaOOjHAooBUIja4rTWNod9nuxTZg=",
+        "ref": "refs/heads/main",
+        "rev": "eaf0839c5708b2bcd82ae5ef199416a335decc2b",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/cm-360/ca-certs"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/cm-360/ca-certs"
+      }
+    },
     "distro-grub-themes": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -280,6 +296,7 @@
     },
     "root": {
       "inputs": {
+        "ca-certs": "ca-certs",
         "distro-grub-themes": "distro-grub-themes",
         "flake-utils": "flake-utils_2",
         "home-manager-stable": "home-manager-stable",

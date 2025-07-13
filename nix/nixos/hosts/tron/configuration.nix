@@ -16,6 +16,7 @@
     ../../modules/docker.nix
     ../../modules/firewall-syncthing.nix
     ../../modules/libvirt.nix
+    ../../modules/pki-ca-certs.nix
     ../../modules/smart-card.nix
     ../../modules/steam.nix
   ];

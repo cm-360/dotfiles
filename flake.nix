@@ -32,6 +32,11 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+
+    ca-certs = {
+      url = "git+ssh://git@github.com/cm-360/ca-certs";
+      flake = false;
+    };
   };
 
   outputs =
