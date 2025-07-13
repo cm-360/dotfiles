@@ -48,6 +48,10 @@
       defaultSystem = "x86_64-linux";
       defaultUsername = "cm360";
 
+      specialArgs = {
+        inherit inputs;
+      };
+
       importPkgs =
         {
           pkgs,
@@ -72,6 +76,7 @@
           hostname,
           username ? defaultUsername,
           extraModules ? [ ],
+          extraSpecialArgs ? { },
         }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = importPkgs { inherit pkgs system; };
@@ -85,6 +90,8 @@
               };
             }
           ] ++ extraModules;
+
+          extraSpecialArgs = specialArgs // extraSpecialArgs;
         };
 
       nixosConfig =
@@ -93,6 +100,7 @@
           system ? defaultSystem,
           hostname,
           extraModules ? [ ],
+          extraSpecialArgs ? { },
         }:
         pkgs.lib.nixosSystem {
           inherit system;
@@ -103,6 +111,8 @@
               networking.hostName = "${hostname}";
             }
           ] ++ extraModules;
+
+          specialArgs = specialArgs // extraSpecialArgs;
         };
     in
     {
