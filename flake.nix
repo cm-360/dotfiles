@@ -160,11 +160,11 @@
 
       nixosConfigurations = {
         "mintaka" = nixosConfig {
-          pkgs = inputs.nixos-24_11; # TODO: upgrade to 25.05
+          pkgs = inputs.nixos-stable; # TODO: upgrade to 25.05
           hostname = "mintaka";
         };
         "orion" = nixosConfig {
-          pkgs = inputs.nixos-24_11; # TODO: upgrade to 25.05
+          pkgs = inputs.nixos-stable; # TODO: upgrade to 25.05
           hostname = "orion";
         };
         "rog" = nixosConfig {
