@@ -21,5 +21,6 @@
   };
 
   # Required for ZFS
+  # head -c 8 /etc/machine-id
   networking.hostId = "c40352c9";
 }
