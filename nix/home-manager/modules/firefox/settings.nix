@@ -39,6 +39,7 @@
 
   "browser.aboutConfig.showWarning" = false;
   "browser.download.useDownloadDir" = false;
+  "browser.urlbar.trimURLs" = false;
 
   # Allow DRM content
   "browser.eme.ui.enabled" = true;
