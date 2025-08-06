@@ -1,0 +1,6 @@
+#!/bin/sh
+
+git stash push -u --keep-index  # Stash uncommitted changes and keep staged
+rm .git/index                   # Remove Git index
+git checkout HEAD -- .          # Checkout all files from HEAD
+git stash pop                   # Reapply stashed changes
