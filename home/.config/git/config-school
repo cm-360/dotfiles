@@ -1,4 +1,4 @@
 [user]
 email = "<school_email>"
 name = "<real_name>"
-signingKey = "F065216C68AE889F!"
+signingKey = "<school_signing_key>"
