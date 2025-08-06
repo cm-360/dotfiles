@@ -72,10 +72,11 @@
         "editor.defaultFormatter": "charliermarsh.ruff",
         "editor.formatOnSave": true
     },
-    "ruff.importStrategy": "fromEnvironment",
+    "python.terminal.activateEnvironment": false,
     "notebook.lineNumbers": "on",
     "notebook.formatOnSave.enabled": true,
     "notebook.defaultFormatter": "charliermarsh.ruff",
+    "ruff.importStrategy": "fromEnvironment",
 
     // Typst
     "[typst]": {
