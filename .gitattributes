@@ -1,1 +1,1 @@
-home/.config/git/* filter=replacements.env
+home/.config/git/* filter=replace.txt
