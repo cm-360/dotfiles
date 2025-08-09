@@ -7,6 +7,11 @@ if command -v eza > /dev/null 2>&1; then
     alias laa="eza -laa"
 fi
 
+# Fuzzy-find and open a directory in VSCodium with zoxide
+zc() {
+    zi "$1" && codium . && exit;
+}
+
 alias bai="shutdown now"
 alias cya="reboot"
 
