@@ -27,6 +27,7 @@
         charliermarsh.ruff
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
+        foxundermoon.shell-format
         golang.go
         jebbs.plantuml
         jkillian.custom-local-formatters

@@ -92,6 +92,7 @@
     python313Packages.python-lsp-server
     python313Packages.ruff # Python formatter
     python313Packages.uv # Python package manager
+    shfmt # Shell formatter
     tinymist # Typst language server
     typst
     typescript-language-server

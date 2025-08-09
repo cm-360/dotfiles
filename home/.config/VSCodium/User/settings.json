@@ -78,6 +78,15 @@
     "notebook.defaultFormatter": "charliermarsh.ruff",
     "ruff.importStrategy": "fromEnvironment",
 
+    // Shell
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.formatOnSave": true,
+        "editor.defaultColorDecorators": "never"
+    },
+    // https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd
+    "shellformat.flag": "-sr", // --space-redirects
+
     // Typst
     "[typst]": {
         "editor.defaultFormatter": "jkillian.custom-local-formatters",
