@@ -1,12 +1,12 @@
 { pkgs, ... }:
 {
   imports = [
+    ./modules/chromium.nix
     ./modules/firefox.nix
     ./modules/input-devices.nix
 
     ../../modules/desktop.nix
     ../../modules/direnv.nix
-    ../../modules/firefox/pkcs11.nix
     ../../modules/gpg.nix
     ../../modules/plasma
     ../../modules/spicetify.nix
