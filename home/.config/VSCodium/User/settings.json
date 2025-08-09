@@ -49,6 +49,11 @@
     },
     "go.toolsManagement.autoUpdate": true,
 
+    // JSON
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
     // Nix
     "[nix]": {
         "editor.defaultFormatter": "jnoortheen.nix-ide",
