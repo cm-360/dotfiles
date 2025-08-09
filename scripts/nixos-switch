@@ -77,13 +77,13 @@ def display_nixos_generation():
         )
 
         for line in result.stdout.splitlines():
-            if "current" in line:
-                parts = line.split()
+            parts = line.split()
+            if "True" == parts[-1]:
                 print()
                 print(f"  Generation : {parts[0]}")
-                print(f"  Build Date : {parts[2]} {parts[3]}")
-                print(f"  NixOS Ver. : {parts[4]}")
-                print(f"  Kernel     : {parts[5]}\n")
+                print(f"  Build Date : {parts[1]} {parts[2]}")
+                print(f"  NixOS Ver. : {parts[3]}")
+                print(f"  Kernel     : {parts[4]}\n")
                 break
     except subprocess.CalledProcessError:
         print("🚫 Failed to retrieve current generation.")
