@@ -232,4 +232,14 @@ in
     metaData.hideOneOffButton = true;
     definedAliases = [ "@nixwiki" ];
   };
+
+  # https://home-manager-options.extranix.com/opensearch.xml
+  home-manager-options = {
+    name = "Home Manager Options";
+    urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
+    icon = "https://home-manager-options.extranix.com/images/favicon.png";
+    updateInterval = 24 * 60 * 60 * 1000; # daily
+    metaData.hideOneOffButton = true;
+    definedAliases = [ "@hmopts" ];
+  };
 }

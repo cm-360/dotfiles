@@ -124,6 +124,7 @@ in
         "nix-packages"
         "nixos-options"
         "nixos-wiki"
+        "home-manager-options"
       ] searchEngines)
       // {
         bing.metaData.hidden = true;
