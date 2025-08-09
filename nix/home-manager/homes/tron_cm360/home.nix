@@ -44,7 +44,6 @@
     qbittorrent
     thunderbird-latest
     tor-browser
-    ungoogled-chromium
     vesktop # Discord
     vlc
 
@@ -102,18 +101,6 @@
   nixpkgs.overlays = [
     (import ../../../overlays/obsidian-wayland-fix.nix)
     (import ../../../overlays/vesktop-discord-icon.nix)
-    (final: prev: {
-      # TODO: fix (I have no idea how to do this)
-      # Do it for them: https://discourse.nixos.org/t/patching-chromium-from-nixpkgs/12302
-      # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/applications/networking/browsers/chromium/browser.nix
-      # Fixes launching on wayland
-      # ungoogled-chromium = prev.ungoogled-chromium.overrideAttrs (oldAttrs: {
-      #   installPhase = oldAttrs.installPhase + ''
-      #     substituteInPlace $out/share/applications/chromium-browser.desktop \
-      #       --replace "Exec=chromium %U" "Exec=chromium --disable-gpu %U"
-      #   '';
-      # });
-    })
   ];
 
   # https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
