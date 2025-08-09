@@ -5,7 +5,6 @@
     # Nixpkgs
     nixos-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-24_11.url = "github:NixOS/nixpkgs/nixos-24.11";
     # Home Manager
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -160,11 +159,11 @@
 
       nixosConfigurations = {
         "mintaka" = nixosConfig {
-          pkgs = inputs.nixos-stable; # TODO: upgrade to 25.05
+          pkgs = inputs.nixos-stable;
           hostname = "mintaka";
         };
         "orion" = nixosConfig {
-          pkgs = inputs.nixos-stable; # TODO: upgrade to 25.05
+          pkgs = inputs.nixos-stable;
           hostname = "orion";
         };
         "rog" = nixosConfig {
