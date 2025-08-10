@@ -13,6 +13,7 @@
       modutilBin = "${pkgs.nssTools}/bin/modutil";
     in
     ''
+      mkdir -p "${dbdir}"
       modutil="${modutilBin} -dbdir ${dbdir}"
       if ! $modutil -list | grep -Fq "${moduleName}"; then
         $modutil -force -add "${moduleName}" -libfile "${moduleLib}"
