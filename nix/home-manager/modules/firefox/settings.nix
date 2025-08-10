@@ -15,6 +15,7 @@
   "browser.startup.homepage" = "about:home";
 
   "browser.newtabpage.enabled" = true;
+  "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
   "browser.newtabpage.activity-stream.showSponsored" = false;
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.default.sites" = "";
