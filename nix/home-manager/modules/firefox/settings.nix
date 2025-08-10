@@ -60,6 +60,10 @@
   # Disable notifications
   "dom.webnotifications.enabled" = false;
 
+  # Automatically enable extensions
+  # https://github.com/BryceBeagle/nixos-config/issues/91#issuecomment-2645922151
+  "extensions.autoDisableScopes" = 0;
+
   # ----- Security -----
 
   # Force 3s delay on security dialogs
