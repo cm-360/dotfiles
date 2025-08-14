@@ -27,6 +27,10 @@
       inputs.nixpkgs.follows = "nixos-unstable";
       inputs.home-manager.follows = "home-manager-unstable";
     };
+    rycee-firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -52,9 +56,14 @@
       defaultSystem = "x86_64-linux";
       defaultUsername = "cm360";
 
-      specialArgs = {
-        inherit inputs;
-      };
+      specialArgs =
+        {
+          system ? defaultSystem,
+        }:
+        {
+          inherit inputs;
+          inherit (inputs.rycee-firefox-addons.lib.${system}) buildFirefoxXpiAddon;
+        };
 
       importPkgs =
         {
@@ -66,6 +75,7 @@
           overlays = [
             (import ./nix/packages)
             inputs.nix-vscode-extensions.overlays.default
+            inputs.rycee-firefox-addons.overlays.default
             (final: prev: {
               spicetifyPackages = inputs.spicetify-nix.legacyPackages.${system};
             })
@@ -95,7 +105,7 @@
             }
           ] ++ extraModules;
 
-          extraSpecialArgs = specialArgs // extraSpecialArgs;
+          extraSpecialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
 
       nixosConfig =
@@ -116,7 +126,7 @@
             }
           ] ++ extraModules;
 
-          specialArgs = specialArgs // extraSpecialArgs;
+          specialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
     in
     {

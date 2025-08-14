@@ -1,7 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  buildFirefoxXpiAddon,
+  ...
+}:
 let
-  defaultProfile = import ../../../modules/firefox/profiles/default.nix { inherit lib pkgs; };
-  secondaryProfile = import ../../../modules/firefox/profiles/secondary.nix { inherit lib pkgs; };
+  importProfile = path: import path { inherit lib pkgs buildFirefoxXpiAddon; };
+
+  personalProfile0 = importProfile ../../../modules/firefox/profiles/personal0.nix;
+  personalProfile1 = importProfile ../../../modules/firefox/profiles/personal1.nix;
 in
 {
   imports = [
@@ -18,8 +25,12 @@ in
     };
 
     profiles = {
-      default = defaultProfile;
-      secondary = secondaryProfile;
+      personal0 = personalProfile0 // {
+        id = 0;
+      };
+      personal1 = personalProfile1 // {
+        id = 1;
+      };
     };
   };
 }

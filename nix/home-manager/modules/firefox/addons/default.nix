@@ -1,24 +1,18 @@
-{ lib, pkgs, ... }:
+{ lib, buildFirefoxXpiAddon, ... }:
 let
-  buildFirefoxXpiAddon = import ./build-xpi-addon.nix { inherit lib pkgs; };
-
   addonsJsonFile = ./addons.json;
   addonsDetails = builtins.fromJSON (builtins.readFile addonsJsonFile);
-  addonsPackages = builtins.mapAttrs (_: details: buildFirefoxXpiAddon details) addonsDetails;
+  packages = builtins.mapAttrs (_: details: buildFirefoxXpiAddon details) addonsDetails;
 
   browserAction =
-    addonInfo:
+    addon:
     let
       sanitizedId = builtins.replaceStrings [ " " ] [ "_" ] (
-        builtins.toString (builtins.split "[^a-z0-9\-]" (lib.toLower addonInfo.addonId))
+        builtins.toString (builtins.split "[^a-z0-9\-]" (lib.toLower addon.addonId))
       );
     in
     sanitizedId + "-browser-action";
-
-  addonActions = builtins.mapAttrs (name: details: (browserAction details)) addonsDetails;
 in
 {
-  details = addonsDetails;
-  packages = addonsPackages;
-  actions = addonActions;
+  inherit browserAction packages;
 }
