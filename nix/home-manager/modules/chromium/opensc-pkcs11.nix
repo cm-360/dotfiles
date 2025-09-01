@@ -7,7 +7,7 @@
 {
   home.activation.addChromiumOpenscPkcs11Module = lib.hm.dag.entryAfter [ "writeBoundary" ] (
     let
-      dbdir = "sql:${config.home.homeDirectory}/.pki/nssdb";
+      dbdir = "${config.home.homeDirectory}/.pki/nssdb";
       moduleName = "OpenSC PKCS #11 Module";
       moduleLib = "${pkgs.opensc}/lib/opensc-pkcs11.so";
       modutilBin = "${pkgs.nssTools}/bin/modutil";
