@@ -22,6 +22,8 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/__pycache__": true,
+        "**/.direnv": true,
+        "**/.venv": true,
     },
 
     // ----- Languages -----
