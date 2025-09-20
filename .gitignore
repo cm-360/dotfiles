@@ -2,3 +2,5 @@
 *.log
 /home/.ssh/config-hosts
 result
+
+*.bak
