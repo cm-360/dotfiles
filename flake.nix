@@ -5,6 +5,7 @@
     # Nixpkgs
     nixos-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # Home Manager
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -15,13 +16,19 @@
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
-    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
-    flake-utils.url = "github:numtide/flake-utils";
+    # Miscellaneous
+    distro-grub-themes = {
+      url = "github:AdisonCavani/distro-grub-themes";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     mpris-discord-rpc = {
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     plasma-manager = {
       url = "github:nix-community/plasma-manager/trunk";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -36,6 +43,7 @@
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
+    # Personal
     ca-certs = {
       url = "git+ssh://git@github.com/cm-360/ca-certs";
       flake = false;
