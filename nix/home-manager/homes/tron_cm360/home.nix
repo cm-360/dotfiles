@@ -111,6 +111,8 @@
     "L %h/.local/share/suyu - - - - /data/cm360/Games/Consoles/Switch/Yuzu"
   ];
 
+  programs.nix-index-database.comma.enable = true;
+
   services.kdeconnect.enable = true;
   services.mpris-discord-rpc.enable = true;
   services.syncthing.enable = true;

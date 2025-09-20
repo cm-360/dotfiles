@@ -25,6 +25,10 @@
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -169,6 +173,7 @@
           hostname = "tron";
           extraModules = [
             inputs.mpris-discord-rpc.homeManagerModules.default
+            inputs.nix-index-database.homeModules.nix-index
             inputs.plasma-manager.homeManagerModules.plasma-manager
             inputs.spicetify-nix.homeManagerModules.spicetify
           ];
