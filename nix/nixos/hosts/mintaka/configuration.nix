@@ -26,7 +26,7 @@
   ];
 
   virtualisation.docker.liveRestore = true;
-  hardware.nvidia-container-toolkit.enable = true;
+  virtualisation.docker.daemon.settings.features.cdi = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
