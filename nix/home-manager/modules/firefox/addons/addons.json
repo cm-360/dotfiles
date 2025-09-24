@@ -34,10 +34,10 @@
   },
   "bitwarden": {
     "pname": "bitwarden",
-    "version": "2025.3.2",
+    "version": "2025.8.2",
     "addonId": "{446900e4-71c2-419f-a6a7-df9c091e268b}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4467426/bitwarden_password_manager-2025.3.2.xpi",
-    "sha256": "30f9384a46f6ef2ba6c9d273fc7c77a9afeef120dc4b3cbc5c28f171f4e8aeab",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4567044/bitwarden_password_manager-2025.8.2.xpi",
+    "sha256": "0a6d986010d4845454083e2a02f81667b43dd7e4901693f4a7d0e7c67d9f7ffb",
     "meta": {
       "homepage": "https://bitwarden.com",
       "description": "At home, at work, or on the go, Bitwarden easily secures all your passwords, passkeys, and sensitive information."
@@ -78,10 +78,10 @@
   },
   "darkreader": {
     "pname": "darkreader",
-    "version": "4.9.103",
+    "version": "4.9.110",
     "addonId": "addon@darkreader.org",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4439735/darkreader-4.9.103.xpi",
-    "sha256": "f565b2263a71626a0310380915b7aef90be8cc6fe16ea43ac1a0846efedc2e4c",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4535824/darkreader-4.9.110.xpi",
+    "sha256": "846245826470cc1a08597480493b2076fcf03322a1228682b8a85b866fae30dc",
     "meta": {
       "homepage": "https://darkreader.org/",
       "description": "Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing."
@@ -100,10 +100,10 @@
   },
   "download-with-jdownloader": {
     "pname": "download-with-jdownloader",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "addonId": "{03e07985-30b0-4ae0-8b3e-0c7519b9bdf6}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4378755/download_with_jdownloader-0.3.5.xpi",
-    "sha256": "41b5a68c3e3c20f0d00a6493e4a5384c966e60b49e43ab5f70516d0213ec7ab0",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4558896/download_with_jdownloader-0.3.6.xpi",
+    "sha256": "42c6b77c604e1bd6a2486dda75df772ff72c2de228939454e81afa6ccfa11dcc",
     "meta": {
       "homepage": "https://webextension.org/listing/download-with.html?from=jdownloader",
       "description": "when activated, interrupts the built-in download manager to direct links to JDownloader"
@@ -122,10 +122,10 @@
   },
   "indie-wiki-buddy": {
     "pname": "indie-wiki-buddy",
-    "version": "3.13.5",
+    "version": "3.13.6",
     "addonId": "{cb31ec5d-c49a-4e5a-b240-16c767444f62}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4471330/indie_wiki_buddy-3.13.5.xpi",
-    "sha256": "9aa6b5aacce9d98a26c500af73725ed81ed0702d888ed4bfac4379f54df9709b",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4517716/indie_wiki_buddy-3.13.6.xpi",
+    "sha256": "b0fd9fc37112488c80fc546505e89a31152f77256c852e32164e86d5a6b5a051",
     "meta": {
       "homepage": "https://getindie.wiki/",
       "description": "Helping you discover quality, independent wikis!\n\nWhen visiting a Fandom wiki, Indie Wiki Buddy redirects or alerts you of independent alternatives. It also filters search engine results. BreezeWiki is also supported, to reduce clutter on Fandom."
@@ -133,21 +133,21 @@
   },
   "librezam": {
     "pname": "librezam",
-    "version": "1.4",
+    "version": "4.0",
     "addonId": "Librezam@Librezam",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4367371/librezam-1.4.xpi",
-    "sha256": "5e568904db19b04277b7312718cd4b0f1b9a4f03979256c0cba04633af40d313",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4564784/librezam-4.0.xpi",
+    "sha256": "2ae250c452fde7f6986d9163a89e83a73297d2a18fb866a88967bfc1a1cbab13",
     "meta": {
       "homepage": null,
-      "description": "Song recognition webextension using Shazam API"
+      "description": "Song recognition webextension using Shazam API (Also supports Audd, ACRCloud  and Tencent API)"
     }
   },
   "localcdn": {
     "pname": "localcdn",
-    "version": "2.6.79",
+    "version": "2.6.81",
     "addonId": "{b86e4813-687a-43e6-ab65-0bde4ab75758}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4464649/localcdn_fork_of_decentraleyes-2.6.79.xpi",
-    "sha256": "3180fe626b674d63191cc6d26516b16fd82f3e23500457e6149dcd14febd9eb5",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4557546/localcdn_fork_of_decentraleyes-2.6.81.xpi",
+    "sha256": "98a33081a50230f18d173d7b64be9de6c35e7a5b68f7710978e9b36257852cd8",
     "meta": {
       "homepage": "https://www.localcdn.org",
       "description": "Emulates remote frameworks (e.g. jQuery, Bootstrap, AngularJS) and delivers them as local resource. Prevents unnecessary 3rd party requests to Google, StackPath, MaxCDN and more. Prepared rules for uBlock Origin/uMatrix."
@@ -166,21 +166,21 @@
   },
   "privacy-badger": {
     "pname": "privacy-badger",
-    "version": "2025.3.27",
+    "version": "2025.9.2",
     "addonId": "jid1-MnnxcxisBPnSXQ@jetpack",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4463652/privacy_badger17-2025.3.27.xpi",
-    "sha256": "45976baab7476792dcad07f4386be618fd49b27eeb000c5e6b4b6f3611bf865e",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4570378/privacy_badger17-2025.9.2.xpi",
+    "sha256": "a7bcc6a8138373cc3721089baee846df228ca7ca9ca87e10b946c20811bd2d0f",
     "meta": {
       "homepage": "https://privacybadger.org/",
-      "description": "Automatically learns to block invisible trackers."
+      "description": "Automatically learns to block hidden trackers. Made by the leading digital rights nonprofit EFF to stop companies from spying on you."
     }
   },
   "react-devtools": {
     "pname": "react-devtools",
-    "version": "6.0.0",
+    "version": "6.1.1",
     "addonId": "@react-devtools",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4360002/react_devtools-6.0.0.xpi",
-    "sha256": "ed862b7bc65fc67a2cac53c3e4607ab9e54f4871656b048dcc42f49f613a0664",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4432990/react_devtools-6.1.1.xpi",
+    "sha256": "b2d69e220402bd6b8bc7d833948915b1d6dcabb453a1d50872a3db860fd92c46",
     "meta": {
       "homepage": "https://github.com/facebook/react",
       "description": "React Developer Tools is a tool that allows you to inspect a React tree, including the component hierarchy, props, state, and more. To get started, just open the Firefox devtools and switch to the \"\u269b\ufe0f Components\" or \"\u269b\ufe0f Profiler\" tab."
@@ -210,10 +210,10 @@
   },
   "stylus": {
     "pname": "stylus",
-    "version": "2.3.14",
+    "version": "2.3.16",
     "addonId": "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4451438/styl_us-2.3.14.xpi",
-    "sha256": "02861b4256d7001a091ce1fbeaaf5ddcf670c3df9db55be3af2bd703a11315d8",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4554444/styl_us-2.3.16.xpi",
+    "sha256": "2cda3445f1e5e5aa95b8b814cc395079185216e10ec42d20811b0350f4c378a8",
     "meta": {
       "homepage": "https://add0n.com/stylus.html",
       "description": "Redesign your favorite websites with Stylus, an actively developed and community driven userstyles manager. Easily install custom themes from popular online repositories, or create, edit, and manage your own personalized CSS stylesheets."
@@ -254,10 +254,10 @@
   },
   "ublock-origin": {
     "pname": "ublock-origin",
-    "version": "1.63.2",
+    "version": "1.66.4",
     "addonId": "uBlock0@raymondhill.net",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4458450/ublock_origin-1.63.2.xpi",
-    "sha256": "d93176cef4dc042e41ba500aa2a90e5d57b5be77449cbd522111585e3a0cd158",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4578681/ublock_origin-1.66.4.xpi",
+    "sha256": "bc62cd930601212f1568964389352bbd4b1808466f2c9ac1198c754338077fb0",
     "meta": {
       "homepage": "https://github.com/gorhill/uBlock#ublock-origin",
       "description": "Finally, an efficient wide-spectrum content blocker. Easy on CPU and memory."
@@ -265,12 +265,12 @@
   },
   "user-agent-string-switcher": {
     "pname": "user-agent-string-switcher",
-    "version": "0.5.0",
+    "version": "0.6.5.1",
     "addonId": "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}",
-    "url": "https://addons.mozilla.org/firefox/downloads/file/4098688/user_agent_string_switcher-0.5.0.xpi",
-    "sha256": "9dc8da3c8c46d4f04d12fd789c63501fa6a2f502f859b286939a090db63eae33",
+    "url": "https://addons.mozilla.org/firefox/downloads/file/4497925/user_agent_string_switcher-0.6.5.1.xpi",
+    "sha256": "aaaf7cfc3434b42836fd0c152a218dbf5e405f65095a8d8f431578461a34c171",
     "meta": {
-      "homepage": "http://add0n.com/useragent-switcher.html",
+      "homepage": "https://webextension.org/listing/useragent-switcher.html",
       "description": "Spoof websites trying to gather information about your web navigation\u2014like your browser type and operating system\u2014to deliver distinct content you may not want."
     }
   },
