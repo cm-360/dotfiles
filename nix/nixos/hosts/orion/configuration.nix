@@ -16,15 +16,14 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  ];
+  environment.systemPackages = with pkgs; [ ];
+
+  services.tailscale.enable = true;
 
   networking.firewall.allowedTCPPorts = [
     80
     443
   ];
-
-  services.tailscale.enable = true;
 
   # Fix for https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = false;
