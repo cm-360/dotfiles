@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import json
+import re
+from pathlib import Path
+
+COMMENT_PATTERN = re.compile(r"(^|\s)//.*", flags=re.MULTILINE)
+
+settings_path = Path("settings.json")
+overlay_path = Path("settings.overlay.jsonc")
+
+
+def recursive_update(base, overlay):
+    for key, value in overlay.items():
+        if isinstance(value, dict) and isinstance(base.get(key), dict):
+            recursive_update(base[key], value)
+        else:
+            base[key] = value
+
+
+def main():
+    try:
+        with settings_path.open("r") as f:
+            settings = json.load(f)
+    except Exception as _:
+        settings = {}
+
+    with overlay_path.open("r") as f:
+        overlay_json = COMMENT_PATTERN.sub("", f.read())
+        overlay_settings = json.loads(overlay_json)
+
+    recursive_update(settings, overlay_settings)
+
+    with settings_path.open("w") as f:
+        json.dump(settings, f, indent=4)
+
+
+if __name__ == "__main__":
+    main()

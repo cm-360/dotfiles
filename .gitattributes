@@ -1,1 +1,2 @@
 home/.config/git/* filter=replace.txt
+home/.config/vesktop/settings/settings.overlay.jsonc filter=replace.txt

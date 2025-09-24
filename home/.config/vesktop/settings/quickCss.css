@@ -1,0 +1,64 @@
+/* @import url("https://raw.githubusercontent.com/SEELE1306/CSS-Snippets/refs/heads/main/Snippets/ToolbarHide/import.css"); */
+
+ul[aria-label="Direct Messages"] {
+  /* Hide Nitro store button */
+  li:has(a[href="/store"]) {
+    display: none;
+  }
+
+  /* Hide shop button */
+  li:has(a[href="/shop"]) {
+    display: none;
+  }
+}
+
+[class*="channelTextArea"] [class*="buttons"] {
+  /***** Change icon sizes *****/
+
+  --new-icon-size: 24px;
+
+  [class*="lottieIcon"] {
+    width: var(--new-icon-size) !important;
+    height: var(--new-icon-size) !important;
+  }
+
+  [class*="spriteContainer"] {
+    --custom-emoji-sprite-size: calc(var(--new-icon-size) - 2px) !important;
+  }
+
+  /***** Hide buttons *****/
+
+  [aria-label="Send a gift"] {
+    display: none;
+  }
+
+  .expression-picker-chat-input-button {
+    /* &:has([aria-label="Open GIF picker"]) {
+        display: none;
+      } */
+    &:has([aria-label="Open sticker picker"]) {
+      display: none;
+    }
+    /* &:has([aria-label="Select emoji"]) {
+        display: none;
+      } */
+  }
+
+  [class*="channelAppLauncher"] {
+    display: none;
+  }
+}
+
+/***** Hide title bar *****/
+
+/* :root {
+  --custom-app-top-bar-height: 0;
+}
+
+nav[aria-label="Servers sidebar"] [class*="scroller"] {
+  padding-top: var(--space-8);
+} */
+
+/* .toolbar__9293f {
+  padding-right: calc(2 * var(--space-xs) + 2 * var(--space-32));
+} */
