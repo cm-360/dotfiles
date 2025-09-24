@@ -4,8 +4,7 @@ set -e
 
 DOTFILES="$HOME/.dotfiles"
 DOTFILES_HOME="$DOTFILES/home"
-
-pushd "$DOTFILES" > /dev/null
+DOTFILES_SECRETS="$HOME/.dotfiles-secrets"
 
 # Call activation scripts
 find "$DOTFILES_HOME" -type f -name "activate" | while read -r source; do
@@ -34,8 +33,11 @@ find "$DOTFILES_HOME" -type f | while read -r source; do
     ln -fs "$source" "$target"
 done
 
+# Update additional dotfiles from secrets repository
+if [ -d "$DOTFILES_SECRETS" ]; then
+    "$DOTFILES_SECRETS/update.sh"
+fi
+
 # Source new shell environment
 . "$DOTFILES/scripts/shell/env.sh"
 . "$DOTFILES/scripts/shell/aliases.sh"
-
-popd > /dev/null

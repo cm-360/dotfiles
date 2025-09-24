@@ -1,6 +1,5 @@
 *.bak
 *.log
 /home/.config/vesktop/settings/settings.json
-/home/.ssh/config-hosts
 /replace.txt
 result
