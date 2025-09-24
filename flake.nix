@@ -115,7 +115,8 @@
                 homeDirectory = "/home/${username}";
               };
             }
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
 
           extraSpecialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
@@ -136,7 +137,8 @@
             {
               networking.hostName = "${hostname}";
             }
-          ] ++ extraModules;
+          ]
+          ++ extraModules;
 
           specialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
@@ -152,14 +154,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "orion";
-        };
-        "${defaultUsername}@rog" = homeConfig {
-          pkgs = nixos-unstable;
-          home-manager = home-manager-unstable;
-          hostname = "rog";
-          extraModules = [
-            { nixpkgs.config.allowUnfree = true; } # TODO: move to configuration.nix
-          ];
         };
         "${defaultUsername}@tron" = homeConfig {
           pkgs = nixos-unstable;
@@ -182,13 +176,6 @@
         "orion" = nixosConfig {
           pkgs = inputs.nixos-stable;
           hostname = "orion";
-        };
-        "rog" = nixosConfig {
-          pkgs = nixos-unstable;
-          hostname = "rog";
-          extraModules = [
-            inputs.distro-grub-themes.nixosModules.${defaultSystem}.default
-          ];
         };
         "tron" = nixosConfig {
           pkgs = nixos-unstable;
