@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     # Common configuration
@@ -20,6 +20,15 @@
     ../../modules/smart-card.nix
     ../../modules/steam.nix
   ];
+
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-settings"
+      "nvidia-x11"
+      "steam"
+      "steam-unwrapped"
+    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
