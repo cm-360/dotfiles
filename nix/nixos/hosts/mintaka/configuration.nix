@@ -18,6 +18,13 @@
     ./modules/hardware-nvidia.nix
   ];
 
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-settings"
+      "nvidia-x11"
+    ];
+
   time.timeZone = lib.mkForce "UTC";
 
   # List packages installed in system profile. To search, run:
