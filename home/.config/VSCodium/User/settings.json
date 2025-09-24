@@ -85,6 +85,13 @@
     "notebook.defaultFormatter": "charliermarsh.ruff",
     "ruff.importStrategy": "fromEnvironment",
 
+    // R
+    "[r]": {
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+
     // Shell
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format",

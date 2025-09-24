@@ -36,6 +36,8 @@
         mechatroner.rainbow-csv
         ms-python.debugpy
         ms-toolsai.jupyter
+        reditorsupport.r
+        reditorsupport.r-syntax
       ]);
   };
 }
