@@ -155,9 +155,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "orion";
-          extraModules = [
-            { nixpkgs.config.allowUnfree = true; } # TODO: move to configuration.nix
-          ];
         };
         "${defaultUsername}@rog" = homeConfig {
           pkgs = nixos-unstable;
