@@ -13,8 +13,6 @@
     "flakes"
   ];
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     # Command line utilities
     htop
