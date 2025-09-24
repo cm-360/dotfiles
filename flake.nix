@@ -147,9 +147,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "mintaka";
-          extraModules = [
-            { nixpkgs.config.allowUnfree = true; } # TODO: move to configuration.nix
-          ];
         };
         "${defaultUsername}@orion" = homeConfig {
           pkgs = nixos-unstable;
