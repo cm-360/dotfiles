@@ -21,20 +21,25 @@
     ../../modules/steam.nix
   ];
 
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [ ];
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.systemPackages = with pkgs; [
-  ];
+  # https://github.com/ReimuNotMoe/ydotool
+  # programs.ydotool.enable = true;
+
+  services.tailscale.enable = true;
 
   networking.firewall.allowedTCPPorts = [
     8080
   ];
 
-  services.tailscale.enable = true;
-
   users.users.cm360.extraGroups = [
-    "docker"
+    # "docker"
     "libvirtd"
+    # "ydotool"
   ];
 
   # This value determines the NixOS release from which the default
