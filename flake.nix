@@ -174,7 +174,7 @@
           extraModules = [
             inputs.mpris-discord-rpc.homeManagerModules.default
             inputs.nix-index-database.homeModules.nix-index
-            inputs.plasma-manager.homeManagerModules.plasma-manager
+            inputs.plasma-manager.homeModules.plasma-manager
             inputs.spicetify-nix.homeManagerModules.spicetify
           ];
         };
