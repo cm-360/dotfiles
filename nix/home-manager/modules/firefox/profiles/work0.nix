@@ -15,96 +15,19 @@ let
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
   extensions = with addons; [
-    # TODO: replace any with userscripts?
-    auto-tab-discard
-    better-canvas
-    better-darker-docs
     bitwarden
-    buster-captcha-solver
-    canvasblocker
     clearurls
     darkreader
-    disable-page-visibility # custom
-    download-with-jdownloader
-    fastforwardteam
-    indie-wiki-buddy
-    librezam # custom
     localcdn
-    plasma-integration
     privacy-badger
-    return-youtube-dislikes
-    simple-tab-groups
-    stylus
-    tampermonkey
-    temporary-containers
-    terms-of-service-didnt-read
     ublock-origin
   ];
 in
 {
-  # about:profiles
-  # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.firefox.profiles
-
-  # https://support.mozilla.org/en-US/kb/containers
-  # - Colors: blue, turquoise, green, yellow, orange, red, pink,
-  #     purple, toolbar
-  # - Icons: briefcase, cart, circle, dollar, fence, fingerprint,
-  #     gift, vacation, food, fruit, pet, tree, chill
-  containers = {
-    "Personal" = {
-      id = 1;
-      color = "blue";
-      icon = "fingerprint";
-    };
-    "School" = {
-      id = 2;
-      color = "orange";
-      icon = "briefcase";
-    };
-    "Development" = {
-      id = 3;
-      color = "green";
-      icon = "tree";
-    };
-  };
-  containersForce = true;
-
   # about:addons
   # about:debugging#/runtime/this-firefox
   extensions = {
     packages = extensions;
-
-    # TODO: allow in private browsing
-    # https://github.com/nix-community/home-manager/issues/5433#issuecomment-2848841865
-
-    # TODO: declare extension settings
-    # settings = {
-    #   "addon@darkreader.org".settings = {
-    #     private_browsing = true;
-    #   };
-    #   "uBlock0@raymondhill.net".settings = {
-    #     private_browsing = true;
-    #   };
-    # };
-
-    # Temporary Containers
-    # - Automatic Mode = false
-    # - Prefix = "Temporary "
-    # - Container Color = "toolbar"
-    # - Container Icon = "chill"
-    # - Container Number = "Reuse available numbers"
-
-    # LocalCDN
-    # - Don't block Google Fonts on Google pages
-
-    # Bitwarden
-    # - Show autofill on form fields
-
-    # ~/.mozilla/firefox/<profile>/extension-preferences.json
-    # TODO: custom activation script
-    # https://mynixos.com/home-manager/option/home.activation
-    # preferences = {
-    # };
   };
 
   # ~/.mozilla/firefox/<profile>/search.json.mozlz4
@@ -121,29 +44,17 @@ in
     engines =
       (lib.getAttrs [
         # General
-        "firefox-addons"
-        "openstreetmap"
         "startpage"
-        "youtube"
-
-        # Games
-        "minecraft-wiki"
-        "modrinth-mods"
-        "terraria-wiki"
-        "calamity-mod-wiki"
 
         # Development
         "github"
         "mdn-web-docs"
         "python3-docs"
-        "pypi"
-        "svelte"
 
         # Nix
         "nix-packages"
         "nixos-options"
         "nixos-wiki"
-        "home-manager-options"
       ] searchEngines)
       // {
         bing.metaData.hidden = true;
@@ -151,9 +62,6 @@ in
       };
   };
 
-  # about:config
-  # ~/.mozilla/firefox/<profile>/prefs.js
-  # ~/.mozilla/firefox/<profile>/user.js
   settings = defaultSettings // {
     # ----- Appearance -----
 
@@ -161,7 +69,9 @@ in
     # - firefox-alpenglow@mozilla.org
     # - firefox-compact-dark@mozilla.org
     # - firefox-compact-light@mozilla.org
-    "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+    "extensions.activeThemeID" = "{bbc344a9-8a64-460a-895c-1aa98f84a319}";
+
+    # TODO: themes require installation?
 
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
@@ -182,7 +92,6 @@ in
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
           (browserAction bitwarden)
-          (browserAction simple-tab-groups)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -190,7 +99,6 @@ in
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
-          (browserAction temporary-containers)
         ];
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
@@ -201,10 +109,6 @@ in
           (browserAction localcdn)
           # Styling
           (browserAction darkreader)
-          (browserAction stylus)
-          # Miscellaneous
-          (browserAction terms-of-service-didnt-read)
-          (browserAction librezam) # custom
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];

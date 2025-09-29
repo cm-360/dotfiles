@@ -9,6 +9,8 @@ let
 
   personalProfile0 = importProfile ../../../modules/firefox/profiles/personal0.nix;
   personalProfile1 = importProfile ../../../modules/firefox/profiles/personal1.nix;
+  workProfile0 = importProfile ../../../modules/firefox/profiles/work0.nix;
+
 in
 {
   imports = [
@@ -30,6 +32,9 @@ in
       };
       personal1 = personalProfile1 // {
         id = 1;
+      };
+      work0 = workProfile0 // {
+        id = 2;
       };
     };
   };
