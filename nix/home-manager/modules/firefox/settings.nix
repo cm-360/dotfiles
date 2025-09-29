@@ -20,6 +20,9 @@
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.default.sites" = "";
 
+  # Disable AI tab group suggestions
+  "browser.tabs.groups.smart.userEnabled" = false;
+
   # Disable first-run information
   "browser.bookmarks.addedImportButton" = true;
   "browser.bookmarks.restore_default_bookmarks" = false;
