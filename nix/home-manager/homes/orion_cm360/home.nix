@@ -31,6 +31,12 @@
 
   services.ssh-agent.enable = true;
 
+  # https://github.com/nix-community/nixos-vscode-server
+  services.vscode-server = {
+    enable = true;
+    installPath = "$HOME/.vscodium-server";
+  };
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {

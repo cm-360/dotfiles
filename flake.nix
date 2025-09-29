@@ -46,6 +46,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     # Personal
     ca-certs = {
@@ -154,6 +155,9 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "orion";
+          extraModules = [
+            inputs.vscode-server.homeModules.default
+          ];
         };
         "${defaultUsername}@tron" = homeConfig {
           pkgs = nixos-unstable;
