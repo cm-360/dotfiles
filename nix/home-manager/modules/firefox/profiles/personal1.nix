@@ -1,20 +1,18 @@
 {
   lib,
   pkgs,
-  buildFirefoxXpiAddon,
   ...
 }:
 let
-  customAddons = import ../addons { inherit lib pkgs buildFirefoxXpiAddon; };
-  addons = pkgs.firefox-addons // customAddons.packages;
-
-  inherit (customAddons) browserAction;
+  browserAction = import ../lib/browser-action.nix { inherit lib; };
 
   defaultSettings = import ../settings.nix;
   searchEngines = import ../engines.nix { inherit pkgs; };
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
-  extensions = with addons; [
+  ryceeAddons = pkgs.firefox-addons;
+
+  extensions = with ryceeAddons; [
     auto-tab-discard
     bitwarden
     clearurls
@@ -71,7 +69,7 @@ in
 
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
-      placements = with addons; {
+      placements = {
         nav-bar = [
           # Navigation
           "back-button"
@@ -87,9 +85,9 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction tampermonkey)
-          (browserAction bitwarden)
-          (browserAction simple-tab-groups)
+          (browserAction ryceeAddons.tampermonkey)
+          (browserAction ryceeAddons.bitwarden)
+          (browserAction ryceeAddons.simple-tab-groups)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -97,18 +95,18 @@ in
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
-          (browserAction temporary-containers)
+          (browserAction ryceeAddons.temporary-containers)
         ];
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
           # Ad-blocking / privacy
-          (browserAction ublock-origin)
-          (browserAction privacy-badger)
-          (browserAction clearurls)
-          (browserAction localcdn)
+          (browserAction ryceeAddons.ublock-origin)
+          (browserAction ryceeAddons.privacy-badger)
+          (browserAction ryceeAddons.clearurls)
+          (browserAction ryceeAddons.localcdn)
           # Styling
-          (browserAction darkreader)
-          (browserAction stylus)
+          (browserAction ryceeAddons.darkreader)
+          (browserAction ryceeAddons.stylus)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];
@@ -117,13 +115,12 @@ in
       # Remembers which widgets have been seen before so new widgets
       # can be put in their default location.
       # See: gSeenWidgets in CustomizableUI.sys.mjs
-      seen =
-        [
-          "developer-button"
-          "save-to-pocket-button"
-        ]
-        # Mark all installed extension actions as seen
-        ++ (map browserAction extensions);
+      seen = [
+        "developer-button"
+        "save-to-pocket-button"
+      ]
+      # Mark all installed extension actions as seen
+      ++ (map browserAction extensions);
 
       # Set of area IDs where items have been added, moved, or removed
       # at least once to optimize building default toolbars.

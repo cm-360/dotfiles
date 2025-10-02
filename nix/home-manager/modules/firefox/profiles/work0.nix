@@ -1,20 +1,18 @@
 {
   lib,
   pkgs,
-  buildFirefoxXpiAddon,
   ...
 }:
 let
-  customAddons = import ../addons { inherit lib pkgs buildFirefoxXpiAddon; };
-  addons = pkgs.firefox-addons // customAddons.packages;
-
-  inherit (customAddons) browserAction;
+  browserAction = import ../lib/browser-action.nix { inherit lib; };
 
   defaultSettings = import ../settings.nix;
   searchEngines = import ../engines.nix { inherit pkgs; };
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
-  extensions = with addons; [
+  ryceeAddons = pkgs.firefox-addons;
+
+  extensions = with ryceeAddons; [
     bitwarden
     clearurls
     darkreader
@@ -75,7 +73,7 @@ in
 
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
-      placements = with addons; {
+      placements = {
         nav-bar = [
           # Navigation
           "back-button"
@@ -91,7 +89,7 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction bitwarden)
+          (browserAction ryceeAddons.bitwarden)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -103,12 +101,12 @@ in
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
           # Ad-blocking / privacy
-          (browserAction ublock-origin)
-          (browserAction privacy-badger)
-          (browserAction clearurls)
-          (browserAction localcdn)
+          (browserAction ryceeAddons.ublock-origin)
+          (browserAction ryceeAddons.privacy-badger)
+          (browserAction ryceeAddons.clearurls)
+          (browserAction ryceeAddons.localcdn)
           # Styling
-          (browserAction darkreader)
+          (browserAction ryceeAddons.darkreader)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];

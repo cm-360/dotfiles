@@ -5,41 +5,44 @@
   ...
 }:
 let
-  customAddons = import ../addons { inherit lib pkgs buildFirefoxXpiAddon; };
-  addons = pkgs.firefox-addons // customAddons.packages;
-
-  inherit (customAddons) browserAction;
+  browserAction = import ../lib/browser-action.nix { inherit lib; };
 
   defaultSettings = import ../settings.nix;
   searchEngines = import ../engines.nix { inherit pkgs; };
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
-  extensions = with addons; [
-    # TODO: replace any with userscripts?
-    auto-tab-discard
-    better-canvas
-    better-darker-docs
-    bitwarden
-    buster-captcha-solver
-    canvasblocker
-    clearurls
-    darkreader
-    disable-page-visibility # custom
-    download-with-jdownloader
-    fastforwardteam
-    indie-wiki-buddy
-    librezam # custom
-    localcdn
-    plasma-integration
-    privacy-badger
-    return-youtube-dislikes
-    simple-tab-groups
-    stylus
-    tampermonkey
-    temporary-containers
-    terms-of-service-didnt-read
-    ublock-origin
-  ];
+  ryceeAddons = pkgs.firefox-addons;
+  customAddons = import ../addons { inherit buildFirefoxXpiAddon; };
+
+  # TODO: replace any with userscripts?
+  extensions =
+    (with ryceeAddons; [
+      auto-tab-discard
+      better-canvas
+      better-darker-docs
+      bitwarden
+      buster-captcha-solver
+      canvasblocker
+      clearurls
+      darkreader
+      download-with-jdownloader
+      fastforwardteam
+      indie-wiki-buddy
+      localcdn
+      plasma-integration
+      privacy-badger
+      return-youtube-dislikes
+      simple-tab-groups
+      stylus
+      tampermonkey
+      temporary-containers
+      terms-of-service-didnt-read
+      ublock-origin
+    ])
+    ++ (with customAddons; [
+      disable-page-visibility
+      librezam
+    ]);
 in
 {
   # about:profiles
@@ -165,7 +168,7 @@ in
 
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
-      placements = with addons; {
+      placements = {
         nav-bar = [
           # Navigation
           "back-button"
@@ -181,8 +184,8 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction bitwarden)
-          (browserAction simple-tab-groups)
+          (browserAction ryceeAddons.bitwarden)
+          (browserAction ryceeAddons.simple-tab-groups)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -190,21 +193,21 @@ in
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
-          (browserAction temporary-containers)
+          (browserAction ryceeAddons.temporary-containers)
         ];
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
           # Ad-blocking / privacy
-          (browserAction ublock-origin)
-          (browserAction privacy-badger)
-          (browserAction clearurls)
-          (browserAction localcdn)
+          (browserAction ryceeAddons.ublock-origin)
+          (browserAction ryceeAddons.privacy-badger)
+          (browserAction ryceeAddons.clearurls)
+          (browserAction ryceeAddons.localcdn)
           # Styling
-          (browserAction darkreader)
-          (browserAction stylus)
+          (browserAction ryceeAddons.darkreader)
+          (browserAction ryceeAddons.stylus)
           # Miscellaneous
-          (browserAction terms-of-service-didnt-read)
-          (browserAction librezam) # custom
+          (browserAction ryceeAddons.terms-of-service-didnt-read)
+          (browserAction customAddons.librezam)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];
