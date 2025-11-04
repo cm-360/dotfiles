@@ -38,6 +38,7 @@
     # GUI apps
     bitwarden-desktop
     blender
+    craftland-launcher
     dbeaver-bin
     element-desktop
     feishin # Jellyfin music client

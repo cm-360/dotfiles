@@ -17,6 +17,10 @@
     };
 
     # Miscellaneous
+    craftland = {
+      url = "github:cm-360/craftland-nix";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     distro-grub-themes = {
       url = "github:AdisonCavani/distro-grub-themes";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -87,6 +91,7 @@
           inherit system;
           overlays = [
             (import ./nix/packages)
+            inputs.craftland.overlays.default
             inputs.nix-vscode-extensions.overlays.default
             inputs.rycee-firefox-addons.overlays.default
             (final: prev: {
