@@ -179,11 +179,11 @@
 
       nixosConfigurations = {
         "mintaka" = nixosConfig {
-          pkgs = inputs.nixos-stable;
+          pkgs = nixos-stable;
           hostname = "mintaka";
         };
         "orion" = nixosConfig {
-          pkgs = inputs.nixos-stable;
+          pkgs = nixos-stable;
           hostname = "orion";
         };
         "tron" = nixosConfig {
