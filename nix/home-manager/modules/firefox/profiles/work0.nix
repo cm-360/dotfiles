@@ -19,14 +19,13 @@ let
     localcdn
     privacy-badger
     ublock-origin
+    violentmonkey
   ];
 in
 {
   # about:addons
   # about:debugging#/runtime/this-firefox
-  extensions = {
-    packages = extensions;
-  };
+  extensions.packages = extensions;
 
   # ~/.mozilla/firefox/<profile>/search.json.mozlz4
   # Can be extracted using mozlz4a: https://gist.github.com/Tblue/62ff47bef7f894e92ed5

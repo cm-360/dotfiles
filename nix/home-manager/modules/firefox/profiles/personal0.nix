@@ -34,10 +34,10 @@ let
       return-youtube-dislikes
       simple-tab-groups
       stylus
-      tampermonkey
       temporary-containers
       terms-of-service-didnt-read
       ublock-origin
+      violentmonkey
     ])
     ++ (with customAddons; [
       disable-page-visibility
@@ -166,6 +166,8 @@ in
     # - firefox-compact-light@mozilla.org
     "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
 
+    "browser.toolbars.bookmarks.visibility" = "always"; # "always", "newtab", "never"
+
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
       placements = {
@@ -202,8 +204,9 @@ in
           (browserAction ryceeAddons.privacy-badger)
           (browserAction ryceeAddons.clearurls)
           (browserAction ryceeAddons.localcdn)
-          # Styling
+          # Customization
           (browserAction ryceeAddons.darkreader)
+          (browserAction ryceeAddons.violentmonkey)
           (browserAction ryceeAddons.stylus)
           # Miscellaneous
           (browserAction ryceeAddons.terms-of-service-didnt-read)

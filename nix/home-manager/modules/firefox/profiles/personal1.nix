@@ -22,17 +22,15 @@ let
     privacy-badger
     simple-tab-groups
     stylus
-    tampermonkey
     temporary-containers
     ublock-origin
+    violentmonkey
   ];
 in
 {
   # about:addons
   # about:debugging#/runtime/this-firefox
-  extensions = {
-    packages = extensions;
-  };
+  extensions.packages = extensions;
 
   # ~/.mozilla/firefox/<profile>/search.json.mozlz4
   # Can be extracted using mozlz4a: https://gist.github.com/Tblue/62ff47bef7f894e92ed5
@@ -85,7 +83,7 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction ryceeAddons.tampermonkey)
+          (browserAction ryceeAddons.violentmonkey)
           (browserAction ryceeAddons.bitwarden)
           (browserAction ryceeAddons.simple-tab-groups)
         ];
