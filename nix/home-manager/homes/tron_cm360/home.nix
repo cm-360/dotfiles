@@ -63,7 +63,7 @@
     prismlauncher
     osu-lazer-bin
     ryubing # https://git.ryujinx.app/ryubing/ryujinx
-    suyu # https://git.suyu.dev/
+    # suyu # https://git.suyu.dev/
 
     # Command line utilities
     bat
