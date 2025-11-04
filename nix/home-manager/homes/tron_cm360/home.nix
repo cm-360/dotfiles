@@ -42,7 +42,6 @@
     # GUI apps
     bitwarden-desktop
     blender
-    craftland-launcher
     dbeaver-bin
     element-desktop
     feishin # Jellyfin music client
@@ -64,6 +63,7 @@
     vlc
 
     # Games
+    craftland-launcher
     dolphin-emu
     prismlauncher
     osu-lazer-bin
