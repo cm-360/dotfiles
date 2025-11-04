@@ -85,11 +85,8 @@
     zoxide # Smarter cd https://github.com/ajeetdsouza/zoxide
 
     # Development utilities
-    android-studio
+    # android-studio
     android-tools
-    godot_4_3
-    # jetbrains.idea-ultimate
-    # unityhub
 
     # Languages
     bash-language-server
