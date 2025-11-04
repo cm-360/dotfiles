@@ -29,6 +29,11 @@
       "spotify"
     ];
 
+  nixpkgs.overlays = [
+    (import ../../../overlays/obsidian-wayland-fix.nix)
+    (import ../../../overlays/vesktop-discord-icon.nix)
+  ];
+
   home.packages = with pkgs; [
     # GUI apps
     bitwarden-desktop
@@ -104,10 +109,11 @@
     vscode-langservers-extracted # CSS/ESLint/HTML/JSON/Markdown
   ];
 
-  nixpkgs.overlays = [
-    (import ../../../overlays/obsidian-wayland-fix.nix)
-    (import ../../../overlays/vesktop-discord-icon.nix)
-  ];
+  programs.nix-index-database.comma.enable = true;
+
+  services.kdeconnect.enable = true;
+  services.mpris-discord-rpc.enable = true;
+  services.syncthing.enable = true;
 
   # https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
   systemd.user.tmpfiles.rules = [
@@ -116,14 +122,6 @@
     "L %h/.local/share/PrismLauncher - - - - /data/cm360/Games/PC/Minecraft/PrismLauncher"
     "L %h/.local/share/suyu - - - - /data/cm360/Games/Consoles/Switch/Yuzu"
   ];
-
-  programs.nix-index-database.comma.enable = true;
-
-  services.kdeconnect.enable = true;
-  services.mpris-discord-rpc.enable = true;
-  services.syncthing.enable = true;
-
-  # xsession.numlock.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -148,10 +146,8 @@
   # - ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   # - ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   # - /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
-  home.sessionVariables = {
-  };
+  home.sessionVariables = { };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # This value determines the Home Manager release that your configuration is
