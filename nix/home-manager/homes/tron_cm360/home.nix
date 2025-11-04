@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./modules/chromium.nix
@@ -21,7 +21,13 @@
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "obsidian"
+      "osu-lazer-bin"
+      "spotify"
+    ];
 
   home.packages = with pkgs; [
     # GUI apps
