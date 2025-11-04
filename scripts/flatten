@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Usage: ./flatten.sh [target_directory]
+# Default is current directory
+target_dir="${1:-.}"
+
+mkdir -p "$target_dir"
+find "$target_dir" -mindepth 2 -type f -exec mv -t "$target_dir" -- {} +
+find "$target_dir" -mindepth 1 -type d -empty -delete
