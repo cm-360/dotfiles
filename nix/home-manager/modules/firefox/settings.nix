@@ -23,6 +23,14 @@
   # Disable AI tab group suggestions
   "browser.tabs.groups.smart.userEnabled" = false;
 
+  # Disable AI chatbot features/menus
+  "browser.ml.enable" = false;
+  "browser.ml.chat.enabled" = false;
+  "browser.ml.chat.menu" = false;
+  "browser.ml.chat.page" = false;
+  "browser.ml.chat.shortcuts" = false;
+  "browser.ml.chat.sidebar" = false;
+
   # Disable first-run information
   "browser.bookmarks.addedImportButton" = true;
   "browser.bookmarks.restore_default_bookmarks" = false;
