@@ -1,6 +1,7 @@
 # about:config
 # ~/.mozilla/firefox/<profile>/prefs.js
 # ~/.mozilla/firefox/<profile>/user.js
+# https://kb.mozillazine.org/
 {
   # Thank-you to:
   # - https://github.com/arkenfox/user.js/blob/master/user.js
