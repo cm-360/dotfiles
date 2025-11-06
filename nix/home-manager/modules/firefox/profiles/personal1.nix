@@ -53,6 +53,7 @@ in
       // {
         bing.metaData.hidden = true;
         google.metaData.hidden = true;
+        perplexity.metaData.hidden = true;
       };
   };
 
