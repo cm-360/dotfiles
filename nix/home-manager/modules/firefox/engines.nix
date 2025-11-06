@@ -4,6 +4,8 @@ let
     inherit name;
     inherit value;
   };
+
+  daily = 24 * 60 * 60 * 1000;
 in
 {
   # ----- General ------
@@ -16,7 +18,7 @@ in
     urls = [ { template = "https://addons.mozilla.org/en-US/firefox/search/?q={searchTerms}"; } ];
     icon = "https://addons.mozilla.org/favicon.ico";
     metaData.hideOneOffButton = true;
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     definedAliases = [ "@addons" ];
   };
 
@@ -26,7 +28,7 @@ in
     description = "Search for a place in OpenStreetMap";
     urls = [ { template = "https://www.openstreetmap.org/search?query={searchTerms}"; } ];
     icon = "https://www.openstreetmap.org/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@osm" ];
   };
@@ -48,7 +50,7 @@ in
       }
     ];
     icon = "https://www.startpage.com/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     definedAliases = [ "@startpage" ];
   };
 
@@ -58,7 +60,7 @@ in
     description = "Search for videos on YouTube";
     urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
     icon = "https://www.youtube.com/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     definedAliases = [ "@youtube" ];
   };
 
@@ -83,7 +85,7 @@ in
       }
     ];
     icon = "https://minecraft.wiki/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@minecraft" ];
   };
@@ -94,7 +96,7 @@ in
     description = "Search for mods on Modrinth, the open source modding platform.";
     urls = [ { template = "https://modrinth.com/mods?q={searchTerms}"; } ];
     icon = "https://modrinth.com/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@modrinth" ];
   };
@@ -115,7 +117,7 @@ in
       }
     ];
     icon = "https://terraria.wiki.gg/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@terraria" ];
   };
@@ -139,7 +141,7 @@ in
       }
     ];
     icon = "https://calamitymod.wiki.gg/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@calamity" ];
   };
@@ -151,7 +153,7 @@ in
     name = "GitHub";
     urls = [ { template = "https://github.com/search?q={searchTerms}&ref=opensearch"; } ];
     icon = "https://github.com/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@github" ];
   };
@@ -161,7 +163,7 @@ in
     name = "MDN Web Docs";
     urls = [ { template = "https://developer.mozilla.org/search?q={searchTerms}"; } ];
     icon = "https://developer.mozilla.org/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@mdn" ];
   };
@@ -171,7 +173,7 @@ in
     name = "Python 3 Docs";
     urls = [ { template = "https://docs.python.org/3/search.html?q={searchTerms}"; } ];
     icon = "https://docs.python.org/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@python" ];
   };
@@ -181,7 +183,7 @@ in
     name = "PyPI";
     urls = [ { template = "https://pypi.org/search/?q={searchTerms}"; } ];
     icon = "https://pypi.org/favicon.ico";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@pypi" ];
   };
@@ -191,7 +193,7 @@ in
     name = "Svelte";
     urls = [ { template = "https://svelte.dev/search?q={searchTerms}"; } ];
     icon = "https://svelte.dev/favicon.png";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@svelte" ];
   };
@@ -238,7 +240,7 @@ in
     name = "Home Manager Options";
     urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
     icon = "https://home-manager-options.extranix.com/images/favicon.png";
-    updateInterval = 24 * 60 * 60 * 1000; # daily
+    updateInterval = daily;
     metaData.hideOneOffButton = true;
     definedAliases = [ "@hmopts" ];
   };
