@@ -147,6 +147,7 @@ in
         "nixos-options"
         "nixos-wiki"
         "home-manager-options"
+        "mynixos"
       ] searchEngines)
       // {
         bing.metaData.hidden = true;

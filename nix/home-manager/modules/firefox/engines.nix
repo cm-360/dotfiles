@@ -244,4 +244,14 @@ in
     metaData.hideOneOffButton = true;
     definedAliases = [ "@hmopts" ];
   };
+
+  # https://mynixos.com/opensearch.xml
+  mynixos = {
+    name = "MyNixOS";
+    urls = [ { template = "https://mynixos.com/search?q={searchTerms}"; } ];
+    icon = "https://mynixos.com/favicon-64x64.png";
+    updateInterval = daily;
+    metaData.hideOneOffButton = true;
+    definedAliases = [ "@mynixos" ];
+  };
 }
