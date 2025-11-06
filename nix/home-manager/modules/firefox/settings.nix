@@ -10,15 +10,27 @@
 
   # ----- Behavior -----
 
-  # Startup
+  # General
+  "general.autoScroll" = true; # middle mouse scroll shortcut
+  "general.useragent.locale" = "en-US";
+  "browser.aboutConfig.showWarning" = false;
+  "browser.download.useDownloadDir" = false; # always ask
+  "browser.urlbar.trimURLs" = false; # show full URLs
+
+  # Startup and homepage
   "browser.startup.page" = 3; # 0=blank, 1=home, 2=last visited page, 3=resume previous session
   "browser.startup.homepage" = "about:home";
 
+  # Minimal new tab page
   "browser.newtabpage.enabled" = true;
   "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
   "browser.newtabpage.activity-stream.showSponsored" = false;
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.default.sites" = "";
+
+  # Allow DRM content
+  "browser.eme.ui.enabled" = true;
+  "media.eme.enabled" = true;
 
   # Disable AI tab group suggestions
   "browser.tabs.groups.smart.userEnabled" = false;
@@ -31,7 +43,7 @@
   "browser.ml.chat.shortcuts" = false;
   "browser.ml.chat.sidebar" = false;
 
-  # Disable first-run information
+  # Disable first-run/onboarding information
   "browser.bookmarks.addedImportButton" = true;
   "browser.bookmarks.restore_default_bookmarks" = false;
   "browser.disableResetPrompt" = true;
@@ -46,17 +58,6 @@
   "startup.homepage_override_url" = "";
   "trailhead.firstrun.didSeeAboutWelcome" = true;
 
-  "general.autoScroll" = true;
-  "general.useragent.locale" = "en-US";
-
-  "browser.aboutConfig.showWarning" = false;
-  "browser.download.useDownloadDir" = false;
-  "browser.urlbar.trimURLs" = false;
-
-  # Allow DRM content
-  "browser.eme.ui.enabled" = true;
-  "media.eme.enabled" = true;
-
   # Disable autofill
   "dom.forms.autocomplete.formautofill" = false;
   "signon.autofillForms" = false;
@@ -65,11 +66,11 @@
   "extensions.formautofill.addresses.enabled" = false;
   "extensions.formautofill.creditCards.enabled" = false;
 
-  # Disable Pocket
-  "extensions.pocket.enabled" = false;
-
   # Disable notifications
   "dom.webnotifications.enabled" = false;
+
+  # Disable Pocket
+  "extensions.pocket.enabled" = false;
 
   # Automatically enable extensions
   # https://github.com/BryceBeagle/nixos-config/issues/91#issuecomment-2645922151
@@ -78,7 +79,7 @@
   # ----- Security -----
 
   # Force 3s delay on security dialogs
-  "security.dialog_enable_delay" = 3000;
+  "security.dialog_enable_delay" = 3000; # milliseconds
 
   # Enable HTTPS-only mode
   "dom.security.https_only_mode" = true;
