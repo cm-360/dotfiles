@@ -11,6 +11,7 @@
     "workbench.colorTheme": "Atom One Dark",
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
 
     // ----- Behavior -----
 
