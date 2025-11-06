@@ -20,10 +20,27 @@
 
   services.tailscale.enable = true;
 
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      # HTTP(S)
+      80
+      443
+      8080
+      8443
+      # Minecraft Java
+      25565
+    ];
+
+    allowedUDPPorts = [
+      # Minecraft Bedrock
+      19132
+    ];
+
+    # Expose ports to libvirt guests
+    interfaces."virbr0".allowedTCPPorts = [
+      3890 # LDAP
+    ];
+  };
 
   # Fix for https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = false;
