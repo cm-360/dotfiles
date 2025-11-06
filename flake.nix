@@ -67,7 +67,6 @@
       nixos-unstable,
       home-manager-stable,
       home-manager-unstable,
-      flake-utils,
       ...
     }@inputs:
     let
