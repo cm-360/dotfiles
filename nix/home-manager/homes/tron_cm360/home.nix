@@ -117,6 +117,8 @@
   services.mpris-discord-rpc.enable = true;
   services.syncthing.enable = true;
 
+  # TODO: migrate to `systemd.user.tmpfiles.settings` eventually
+  # https://github.com/nix-community/home-manager/pull/8092
   # https://www.freedesktop.org/software/systemd/man/tmpfiles.d.html
   systemd.user.tmpfiles.rules = [
     "L %h/.config/Ryujinx - - - - /data/cm360/Games/Consoles/Switch/Ryujinx"
