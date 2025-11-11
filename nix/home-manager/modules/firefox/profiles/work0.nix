@@ -18,6 +18,7 @@ let
     darkreader
     localcdn
     privacy-badger
+    stylus
     ublock-origin
     violentmonkey
   ];
@@ -105,8 +106,10 @@ in
           (browserAction ryceeAddons.privacy-badger)
           (browserAction ryceeAddons.clearurls)
           (browserAction ryceeAddons.localcdn)
-          # Styling
+          # Customization
           (browserAction ryceeAddons.darkreader)
+          (browserAction ryceeAddons.violentmonkey)
+          (browserAction ryceeAddons.stylus)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];
