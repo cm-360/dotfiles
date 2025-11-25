@@ -24,7 +24,9 @@
     distro-grub-themes = {
       url = "github:AdisonCavani/distro-grub-themes";
       inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.flake-utils.follows = "flake-utils";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     mpris-discord-rpc = {
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -50,7 +52,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
-    vscode-server.url = "github:nix-community/nixos-vscode-server";
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     # Personal
     ca-certs = {
