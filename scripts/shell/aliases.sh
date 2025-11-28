@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if command -v eza > /dev/null 2>&1; then
     alias ls="eza"
@@ -23,7 +23,9 @@ alias adb-shizuku="adb shell /data/app/~~xcFWMucY7HgQlOOf7yyoGw==/moe.shizuku.pr
 alias adb-automate="adb shell sh /sdcard/Android/data/com.llamalab.automate/cache/start.sh"
 
 nix-run() {
-    nix run nixpkgs#"$1" -- "${@:2}"
+    pkg=$1
+    shift
+    nix run nixpkgs#"$pkg" -- "$@"
 }
 
 # TODO: Remove once fixed upstream

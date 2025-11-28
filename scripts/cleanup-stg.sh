@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # STG folder matching pattern
 pattern="STG-backups-[[:alnum:]]+-[[:alnum:]]"

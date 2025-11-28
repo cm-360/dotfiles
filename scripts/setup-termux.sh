@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
@@ -56,7 +56,7 @@ fi
 ########## Dotfiles and Shell ##########
 
 # Setup dotfiles
-curl -fsSL "https://raw.githubusercontent.com/cm-360/dotfiles/refs/heads/main/install.sh" | bash
+curl -fsSL "https://raw.githubusercontent.com/cm-360/dotfiles/refs/heads/main/install.sh" | sh
 
 # Change default shell to zsh
 chsh -s zsh
