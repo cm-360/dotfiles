@@ -28,7 +28,3 @@ nix-run() {
     nix run nixpkgs#"$pkg" -- "$@"
 }
 
-# TODO: Remove once fixed upstream
-# Fixes invisible pie chart in Filelight on Qt6+NVIDIA+Wayland
-# https://bugs.kde.org/show_bug.cgi?id=502709#c10
-alias filelight="QT_QPA_PLATFORM=xcb filelight"
