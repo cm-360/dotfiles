@@ -55,6 +55,11 @@
     ];
   };
 
+  fileSystems."/tmp" = {
+    device = "none";
+    fsType = "tmpfs";
+  };
+
   fileSystems."/data" = {
     device = "/dev/vg-data/data";
     fsType = "btrfs";
