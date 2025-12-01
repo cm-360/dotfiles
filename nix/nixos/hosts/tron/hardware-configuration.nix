@@ -63,6 +63,7 @@
   fileSystems."/data" = {
     device = "/dev/vg-data/data";
     fsType = "btrfs";
+    options = [ "nofail" ];
   };
 
   fileSystems."/virt" = {
