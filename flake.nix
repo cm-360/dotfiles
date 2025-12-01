@@ -6,6 +6,8 @@
     nixos-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     # Home Manager
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -212,6 +214,14 @@
         "orion" = nixosConfig {
           pkgs = nixos-stable;
           hostname = "orion";
+        };
+        "raspi" = nixosConfig {
+          pkgs = nixos-unstable;
+          system = "aarch64-linux";
+          hostname = "raspi";
+          extraModules = [
+            inputs.nixos-hardware.nixosModules.raspberry-pi-3
+          ];
         };
         "tron" = nixosConfig {
           pkgs = nixos-unstable;
