@@ -26,6 +26,11 @@
       inputs.nixpkgs.follows = "nixos-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    eden = {
+      url = "github:grantimatter/eden-flake";
+      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     flake-utils.url = "github:numtide/flake-utils";
     mpris-discord-rpc = {
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
@@ -183,6 +188,7 @@
           home-manager = home-manager-unstable;
           hostname = "tron";
           extraModules = [
+            inputs.eden.homeModules.default
             inputs.mpris-discord-rpc.homeManagerModules.default
             inputs.nix-index-database.homeModules.nix-index
             inputs.plasma-manager.homeModules.plasma-manager

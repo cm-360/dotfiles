@@ -111,6 +111,7 @@
     vscode-langservers-extracted # CSS/ESLint/HTML/JSON/Markdown
   ];
 
+  programs.eden.enable = true;
   programs.nix-index-database.comma.enable = true;
 
   services.kdeconnect.enable = true;
