@@ -55,6 +55,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -67,6 +71,10 @@
     # Personal
     ca-certs = {
       url = "git+ssh://git@github.com/cm-360/ca-certs";
+      flake = false;
+    };
+    secrets = {
+      url = "git+file:///home/cm360/.dotfiles-secrets";
       flake = false;
     };
   };
@@ -194,6 +202,7 @@
             inputs.mpris-discord-rpc.homeManagerModules.default
             inputs.nix-index-database.homeModules.nix-index
             inputs.plasma-manager.homeModules.plasma-manager
+            inputs.sops-nix.homeManagerModules.sops
             inputs.spicetify-nix.homeManagerModules.spicetify
           ];
         };
@@ -228,6 +237,7 @@
           hostname = "tron";
           extraModules = [
             inputs.distro-grub-themes.nixosModules.${defaultSystem}.default
+            inputs.sops-nix.nixosModules.sops
           ];
         };
       };

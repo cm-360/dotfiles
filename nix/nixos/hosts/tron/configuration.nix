@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     # Common configuration
@@ -10,6 +15,7 @@
     ./modules/boot.nix
     ./modules/hardware-keyboard.nix
     ./modules/hardware-nvidia.nix
+    ./modules/sops.nix
 
     # Additional modules
     ../../modules/desktop-plasma6.nix
@@ -50,6 +56,10 @@
     "libvirtd"
     # "ydotool"
   ];
+
+  users.mutableUsers = false;
+  users.users.root.hashedPasswordFile = config.sops.secrets."hashed_passwords/root".path;
+  users.users.cm360.hashedPasswordFile = config.sops.secrets."hashed_passwords/cm360".path;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -28,15 +28,17 @@
     allowDiscards = true;
   };
 
-  # https://nixos.wiki/wiki/Full_Disk_Encryption
+  # https://wiki.nixos.org/wiki/Full_Disk_Encryption
   # https://wiki.archlinux.org/title/Dm-crypt/Device_encryption
+  # https://www.man7.org/linux/man-pages/man5/crypttab.5.html
   # https://gist.github.com/MaxXor/ba1665f47d56c24018a943bb114640d7
-  environment.etc.crypttab = {
+  environment.etc."crypttab" = {
     mode = "0600";
     text = ''
       # <volume-name> <encrypted-device> [key-file] [options]
-      cryptdata0 UUID=4368b300-921a-462b-bdc3-79259eca4615 /etc/cryptdata.key luks,noearly,discard
-      cryptdata1 UUID=5ae6aa77-f597-4c55-8dbb-f36b3c044689 /etc/cryptdata.key luks,noearly,discard
+      cryptdata0  UUID=4368b300-921a-462b-bdc3-79259eca4615 /etc/cryptdata.key   luks,discard,nofail
+      cryptdata1  UUID=5ae6aa77-f597-4c55-8dbb-f36b3c044689 /etc/cryptdata.key   luks,discard,nofail
+      cryptexthdd UUID=f4e09e88-2ac4-4470-9c5f-6944e87fe0be /etc/cryptexthdd.key luks,nofail
     '';
   };
 

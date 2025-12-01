@@ -4,6 +4,7 @@
     ./modules/chromium.nix
     ./modules/firefox.nix
     ./modules/input-devices.nix
+    ./modules/sops.nix
 
     ../../modules/desktop.nix
     ../../modules/direnv.nix
