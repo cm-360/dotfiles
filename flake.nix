@@ -109,7 +109,6 @@
         import pkgs {
           inherit system;
           overlays = [
-            (import ./nix/packages)
             inputs.craftland.overlays.default
             inputs.nix-vscode-extensions.overlays.default
             inputs.rycee-firefox-addons.overlays.default
