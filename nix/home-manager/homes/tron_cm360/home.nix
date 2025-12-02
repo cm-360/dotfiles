@@ -30,10 +30,6 @@
       "spotify"
     ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "gradle-7.6.6" # TODO: determine dependent and remove once upgraded
-  ];
-
   nixpkgs.overlays = [
     (import ../../../overlays/obsidian-wayland-fix.nix)
     (import ../../../overlays/vesktop-discord-icon.nix)
