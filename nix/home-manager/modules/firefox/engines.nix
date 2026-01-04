@@ -66,6 +66,30 @@ in
 
   # ----- Games -----
 
+  # https://astroneer.wiki.gg/rest.php/v1/search
+  astroneer-wiki = {
+    name = "Astroneer Wiki";
+    urls = [
+      { template = "https://astroneer.wiki.gg/wiki/Special:Search?search={searchTerms}"; }
+      {
+        template = "https://astroneer.wiki.gg/api.php";
+        params = [
+          (param "action" "opensearch")
+          (param "namespace" "0")
+          (param "maxage" "43200")
+          (param "smaxage" "43200")
+          (param "uselang" "content")
+          (param "search" "{searchTerms}")
+        ];
+        type = "application/x-suggestions+json";
+      }
+    ];
+    icon = "https://astroneer.wiki.gg/images/Site-favicon.ico";
+    updateInterval = daily;
+    metaData.hideOneOffButton = true;
+    definedAliases = [ "@astroneer" ];
+  };
+
   # https://minecraft.wiki/opensearch_desc.php
   minecraft-wiki = {
     name = "Minecraft Wiki";

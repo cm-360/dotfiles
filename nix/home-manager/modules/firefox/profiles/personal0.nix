@@ -130,6 +130,7 @@ in
         "youtube"
 
         # Games
+        "astroneer-wiki"
         "minecraft-wiki"
         "modrinth-mods"
         "terraria-wiki"
