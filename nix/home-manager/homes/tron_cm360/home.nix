@@ -64,6 +64,7 @@
     # Games
     craftland-launcher
     dolphin-emu
+    heroic
     prismlauncher
     osu-lazer-bin
     ryubing # https://git.ryujinx.app/ryubing/ryujinx
