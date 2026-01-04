@@ -226,10 +226,27 @@ in
     definedAliases = [ "@nixopts" ];
   };
 
-  # https://nixos.wiki/opensearch_desc.php
+  # https://wiki.nixos.org/w/rest.php/v1/search
   nixos-wiki = {
     name = "NixOS Wiki";
-    urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
+    urls = [
+      {
+        template = "https://wiki.nixos.org/w/index.php";
+        params = [
+          (param "title" "Special:Search")
+          (param "search" "{searchTerms}")
+        ];
+      }
+      {
+        template = "https://wiki.nixos.org/w/api.php";
+        params = [
+          (param "action" "opensearch")
+          (param "namespace" "0")
+          (param "search" "{searchTerms}")
+        ];
+        type = "application/x-suggestions+json";
+      }
+    ];
     icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
     metaData.hideOneOffButton = true;
     definedAliases = [ "@nixwiki" ];
