@@ -176,7 +176,6 @@
           extraModules = [
             inputs.mpris-discord-rpc.homeManagerModules.default
             inputs.plasma-manager.homeModules.plasma-manager
-            inputs.spicetify-nix.homeManagerModules.spicetify
           ];
         };
         "${defaultUsername}@mintaka" = homeConfig {
@@ -188,9 +187,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "orion";
-          extraModules = [
-            inputs.vscode-server.homeModules.default
-          ];
         };
         "${defaultUsername}@tron" = homeConfig {
           pkgs = nixos-unstable;
@@ -199,10 +195,8 @@
           extraModules = [
             inputs.eden.homeModules.default
             inputs.mpris-discord-rpc.homeManagerModules.default
-            inputs.nix-index-database.homeModules.nix-index
             inputs.plasma-manager.homeModules.plasma-manager
             inputs.sops-nix.homeManagerModules.sops
-            inputs.spicetify-nix.homeManagerModules.spicetify
           ];
         };
       };

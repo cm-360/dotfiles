@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [
+    inputs.spicetify-nix.homeManagerModules.spicetify
+  ];
+
   # https://gerg-l.github.io/spicetify-nix/
   programs.spicetify = {
     enable = true;

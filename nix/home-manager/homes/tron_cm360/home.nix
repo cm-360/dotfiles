@@ -6,11 +6,13 @@
     ./modules/input-devices.nix
     ./modules/sops.nix
 
+    ../../modules/comma.nix
     ../../modules/desktop.nix
     ../../modules/direnv.nix
     ../../modules/gpg.nix
     ../../modules/plasma
     ../../modules/spicetify.nix
+    ../../modules/vscode-server.nix
     ../../modules/vscodium.nix
   ];
 
@@ -109,7 +111,6 @@
   ];
 
   programs.eden.enable = true;
-  programs.nix-index-database.comma.enable = true;
 
   services.kdeconnect.enable = true;
   services.mpris-discord-rpc.enable = true;
