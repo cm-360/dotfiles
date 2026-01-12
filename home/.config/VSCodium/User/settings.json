@@ -26,6 +26,7 @@
         "**/.direnv": true,
         "**/.venv": true,
     },
+    "terminal.integrated.stickyScroll.enabled": false,
 
     // ----- Languages -----
 
