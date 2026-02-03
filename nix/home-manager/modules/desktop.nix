@@ -3,7 +3,7 @@
 {
   home.activation = {
     updateDesktopIcons = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ${pkgs.desktop-file-utils}/bin/update-desktop-database -v ~/.local/share/applications
+      run ${pkgs.desktop-file-utils}/bin/update-desktop-database -v ~/.local/share/applications
     '';
   };
 }
