@@ -1,5 +1,8 @@
+{ inputs, ... }:
 {
   imports = [
+    inputs.plasma-manager.homeModules.plasma-manager
+
     ./kwin.nix
     ./panels.nix
     ./power.nix
