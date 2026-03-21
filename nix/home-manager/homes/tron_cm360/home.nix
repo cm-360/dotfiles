@@ -59,12 +59,18 @@
 
     # Games
     craftland-launcher
-    dolphin-emu
     heroic
     prismlauncher
     osu-lazer-bin
+
+    # Emulators
+    azahar
+    cemu
+    dolphin-emu
+    eden
+    melonds
+    mgba
     ryubing # https://git.ryujinx.app/ryubing/ryujinx
-    # suyu # https://git.suyu.dev/
 
     # Command line utilities
     bat
@@ -106,8 +112,6 @@
     typescript-language-server
     vscode-langservers-extracted # CSS/ESLint/HTML/JSON/Markdown
   ];
-
-  programs.eden.enable = true;
 
   services.kdeconnect.enable = true;
   services.syncthing.enable = true;
