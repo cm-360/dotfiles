@@ -1,24 +1,17 @@
 { pkgs, ... }:
 {
   imports = [
-    ./modules/chromium.nix
-    ./modules/firefox.nix
-
     ../../modules/desktop.nix
     ../../modules/direnv.nix
     ../../modules/gpg.nix
     ../../modules/plasma
     ../../modules/spicetify.nix
+    ../../modules/vesktop
     ../../modules/vscodium.nix
-  ];
 
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+    ./modules/chromium.nix
+    ./modules/firefox.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -40,7 +33,6 @@
     qbittorrent
     thunderbird-latest
     tor-browser
-    vesktop # Discord
     vlc
 
     # Command line utilities
@@ -65,7 +57,7 @@
     # Languages
     bash-language-server
     nil # Nix language server
-    nixfmt-rfc-style
+    nixfmt
     go
     gopls # Go language server
     prettypst # Typst formatter, https://github.com/antonWetzel/prettypst
@@ -86,10 +78,7 @@
   ];
 
   services.kdeconnect.enable = true;
-  services.mpris-discord-rpc.enable = true;
   services.syncthing.enable = true;
-
-  # xsession.numlock.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
