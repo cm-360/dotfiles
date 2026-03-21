@@ -3,14 +3,16 @@
 
   inputs = {
     # Nixpkgs
-    nixos-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     # Home Manager
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixos-stable";
     };
     home-manager-unstable = {
@@ -74,8 +76,7 @@
       flake = false;
     };
     secrets = {
-      url = "git+file:///home/cm360/.dotfiles-secrets";
-      flake = false;
+      url = "git+ssh://cm360@orion/home/cm360/secrets.git";
     };
   };
 
@@ -232,6 +233,10 @@
             inputs.distro-grub-themes.nixosModules.${defaultSystem}.default
             inputs.sops-nix.nixosModules.sops
           ];
+        };
+        "nas" = nixosConfig {
+          pkgs = nixos-stable;
+          hostname = "nas";
         };
       };
     };
