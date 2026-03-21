@@ -36,6 +36,8 @@
         path = "/etc/cryptexthdd.key";
       };
 
+      "nix/signing-keys/tron-0-private".mode = "0600";
+      "nix/signing-keys/tron-0-public".mode = "0644";
     };
   };
 }

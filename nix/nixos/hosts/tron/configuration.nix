@@ -28,6 +28,13 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
+  nix.settings = {
+    secret-key-files = [
+      "${config.sops.secrets."nix/signing-keys/tron-0-private".path}"
+    ];
+    inherit (inputs.secrets.nix) trusted-public-keys;
+  };
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
@@ -36,6 +43,8 @@
       "steam"
       "steam-unwrapped"
     ];
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
