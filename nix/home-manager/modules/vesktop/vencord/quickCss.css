@@ -28,23 +28,17 @@ ul[aria-label="Direct Messages"] {
 
   /***** Hide buttons *****/
 
-  [aria-label="Send a gift"] {
+  [aria-label="Give a Gift"] {
     display: none;
   }
 
   .expression-picker-chat-input-button {
-    /* &:has([aria-label="Open GIF picker"]) {
-        display: none;
-      } */
     &:has([aria-label="Open sticker picker"]) {
       display: none;
     }
-    /* &:has([aria-label="Select emoji"]) {
-        display: none;
-      } */
   }
 
-  [class*="channelAppLauncher"] {
+  .app-launcher-entrypoint {
     display: none;
   }
 }

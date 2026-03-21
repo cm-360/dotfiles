@@ -16,6 +16,7 @@
     ../../modules/gpg.nix
     ../../modules/plasma
     ../../modules/spicetify.nix
+    ../../modules/vesktop
     ../../modules/vscode-server.nix
     ../../modules/vscodium.nix
   ];
@@ -54,7 +55,6 @@
     qbittorrent
     thunderbird-latest
     tor-browser
-    vesktop # Discord
     vlc
 
     # Games
