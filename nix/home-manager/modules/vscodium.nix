@@ -29,6 +29,7 @@
         esbenp.prettier-vscode
         foxundermoon.shell-format
         golang.go
+        jeanp413.open-remote-ssh
         jebbs.plantuml
         jkillian.custom-local-formatters
         jnoortheen.nix-ide
