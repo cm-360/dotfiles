@@ -1,7 +1,15 @@
-{ config, inputs, ... }:
 {
+  config,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    inputs.sops-nix.homeManagerModules.sops
+  ];
+
   sops = {
-    defaultSopsFile = "${inputs.secrets}/sops/tron_cm360/secrets.yaml";
+    defaultSopsFile = "${inputs.secrets}/sops/users/cm360_tron/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";

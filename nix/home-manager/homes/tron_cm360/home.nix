@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./modules/chromium.nix
@@ -15,14 +19,6 @@
     ../../modules/vscode-server.nix
     ../../modules/vscodium.nix
   ];
-
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -96,7 +92,7 @@
     # Languages
     bash-language-server
     nil # Nix language server
-    nixfmt-rfc-style
+    nixfmt
     go
     gopls # Go language server
     prettypst # Typst formatter, https://github.com/antonWetzel/prettypst
@@ -114,7 +110,6 @@
   programs.eden.enable = true;
 
   services.kdeconnect.enable = true;
-  services.mpris-discord-rpc.enable = true;
   services.syncthing.enable = true;
 
   # TODO: migrate to `systemd.user.tmpfiles.settings` eventually

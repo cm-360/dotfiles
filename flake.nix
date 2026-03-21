@@ -193,12 +193,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "tron";
-          extraModules = [
-            inputs.eden.homeModules.default
-            inputs.mpris-discord-rpc.homeManagerModules.default
-            inputs.plasma-manager.homeModules.plasma-manager
-            inputs.sops-nix.homeManagerModules.sops
-          ];
         };
       };
 
@@ -229,10 +223,6 @@
         "tron" = nixosConfig {
           pkgs = nixos-unstable;
           hostname = "tron";
-          extraModules = [
-            inputs.distro-grub-themes.nixosModules.${defaultSystem}.default
-            inputs.sops-nix.nixosModules.sops
-          ];
         };
         "nas" = nixosConfig {
           pkgs = nixos-stable;

@@ -2,22 +2,14 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
   imports = [
-    # Common configuration
     ../../modules/profiles/laptop.nix
     ../../modules/users/cm360.nix
 
-    # Boot / Hardware
-    ./hardware-configuration.nix
-    ./modules/boot.nix
-    ./modules/hardware-keyboard.nix
-    ./modules/hardware-nvidia.nix
-    ./modules/sops.nix
-
-    # Additional modules
     ../../modules/desktop-plasma6.nix
     ../../modules/docker.nix
     ../../modules/firewall-syncthing.nix
@@ -25,7 +17,16 @@
     ../../modules/pki-ca-certs.nix
     ../../modules/smart-card.nix
     ../../modules/steam.nix
+
+    ./modules/hardware/boot.nix
+    ./modules/hardware/filesystems.nix
+    ./modules/hardware/keyboard.nix
+    ./modules/hardware/nvidia.nix
+    ./modules/sops.nix
+    ./modules/users.nix
   ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -50,16 +51,6 @@
   networking.firewall.allowedTCPPorts = [
     8080
   ];
-
-  users.users.cm360.extraGroups = [
-    # "docker"
-    "libvirtd"
-    # "ydotool"
-  ];
-
-  users.mutableUsers = false;
-  users.users.root.hashedPasswordFile = config.sops.secrets."hashed_passwords/root".path;
-  users.users.cm360.hashedPasswordFile = config.sops.secrets."hashed_passwords/cm360".path;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
