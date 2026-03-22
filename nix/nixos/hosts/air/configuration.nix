@@ -20,15 +20,20 @@
     inherit (inputs.secrets.nix) trusted-public-keys;
   };
 
+  # https://blog.quarkslab.com/reverse-engineering-broadcom-wireless-chipsets.html
+  # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/broadcom-sta/default.nix
+  nixpkgs.config.allowInsecurePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "broadcom-sta"
+    ];
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
       "broadcom-sta"
     ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.57"
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
