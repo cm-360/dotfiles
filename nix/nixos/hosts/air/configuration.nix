@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./modules/boot.nix
@@ -10,6 +15,10 @@
     ../../modules/desktop-plasma6.nix
     ../../modules/firewall-syncthing.nix
   ];
+
+  nix.settings = {
+    inherit (inputs.secrets.nix) trusted-public-keys;
+  };
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
