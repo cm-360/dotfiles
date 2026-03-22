@@ -1,18 +1,31 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
-    # Common configuration
     ../../modules/profiles/server.nix
     ../../modules/users/cm360.nix
 
-    # Boot / Hardware
-    ./hardware-configuration.nix
-    ./modules/boot.nix
-
-    # Additional modules
     ../../modules/docker.nix
     ../../modules/libvirt.nix
+
+    ./modules/hardware/boot.nix
+    ./modules/hardware/filesystems.nix
+    ./modules/sops.nix
+    ./modules/users.nix
   ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
+
+  nix.settings = {
+    secret-key-files = [
+      "${config.sops.secrets."nix/signing-keys/orion-0-private".path}"
+    ];
+    inherit (inputs.secrets.nix) trusted-public-keys;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -44,10 +57,6 @@
 
   # Fix for https://github.com/NixOS/nixpkgs/issues/180175
   systemd.services.NetworkManager-wait-online.enable = false;
-
-  users.users.cm360.extraGroups = [
-    "libvirtd"
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
