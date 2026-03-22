@@ -23,6 +23,14 @@
         mode = "0644";
         path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
       };
+      "ssh/id_ed25519_sftp" = {
+        mode = "0600";
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519_sftp";
+      };
+      "ssh/id_ed25519_sftp.pub" = {
+        mode = "0644";
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519_sftp.pub";
+      };
     };
   };
 }
