@@ -131,7 +131,6 @@
           system ? defaultSystem,
           hostname,
           username ? defaultUsername,
-          extraModules ? [ ],
           extraSpecialArgs ? { },
         }:
         home-manager.lib.homeManagerConfiguration {
@@ -145,8 +144,7 @@
                 homeDirectory = "/home/${username}";
               };
             }
-          ]
-          ++ extraModules;
+          ];
 
           extraSpecialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
@@ -157,7 +155,6 @@
           nixosSystem ? pkgs.lib.nixosSystem,
           system ? defaultSystem,
           hostname,
-          extraModules ? [ ],
           extraSpecialArgs ? { },
         }:
         nixosSystem {
@@ -168,8 +165,7 @@
             {
               networking.hostName = "${hostname}";
             }
-          ]
-          ++ extraModules;
+          ];
 
           specialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
         };
