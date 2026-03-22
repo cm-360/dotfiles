@@ -7,6 +7,11 @@
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-raspberrypi = {
+      # https://github.com/nvmd/nixos-raspberrypi/pull/131
+      url = "github:nvmd/nixos-raspberrypi/remove-options-compat";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
 
     impermanence.url = "github:nix-community/impermanence";
 
@@ -149,12 +154,13 @@
       nixosConfig =
         {
           pkgs,
+          nixosSystem ? pkgs.lib.nixosSystem,
           system ? defaultSystem,
           hostname,
           extraModules ? [ ],
           extraSpecialArgs ? { },
         }:
-        pkgs.lib.nixosSystem {
+        nixosSystem {
           inherit system;
 
           modules = [
@@ -216,6 +222,15 @@
           pkgs = nixos-unstable;
           system = "aarch64-linux";
           hostname = "raspi3";
+        };
+        "raspi5" = nixosConfig {
+          pkgs = nixos-unstable;
+          nixosSystem = inputs.nixos-raspberrypi.lib.nixosSystem;
+          system = "aarch64-linux";
+          hostname = "raspi5";
+          extraSpecialArgs = {
+            inherit (inputs) nixos-raspberrypi;
+          };
         };
         "tron" = nixosConfig {
           pkgs = nixos-unstable;
