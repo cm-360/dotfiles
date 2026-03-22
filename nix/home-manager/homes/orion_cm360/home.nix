@@ -1,18 +1,20 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ../../modules/comma.nix
     ../../modules/gpg.nix
     ../../modules/vscode-server.nix
+
+    ./modules/podman
+    ./modules/sops.nix
   ];
 
-  nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
+  home.username = "cm360";
+  home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
     bat

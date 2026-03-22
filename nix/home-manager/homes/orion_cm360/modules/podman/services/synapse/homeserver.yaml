@@ -1,0 +1,68 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "@domain@"
+public_baseurl: "https://matrix.@domain@"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    # password:
+    dbname: synapse
+    host: "@db_host@"
+    cp_min: 5
+    cp_max: 10
+modules:
+  - module: "ldap_auth_provider.LdapAuthProviderModule"
+    config:
+      enabled: true
+      mode: "search"
+      # TODO: ldap network
+      uri: "ldap://192.168.122.1:3890"
+      start_tls: false
+      base: "ou=people,@base_dn@"
+      attributes:
+        uid: "uid"
+        mail: "mail"
+        name: "displayName"
+    bind_dn: "uid=admin,ou=people,@base_dn@"
+    bind_password_file: "/secrets/ldap_bind_password"
+password_config:
+  localdb_enabled: false
+log_config: "/config/log_config.yaml"
+media_store_path: /data/media_store
+registration_shared_secret_path: "/secrets/registration_shared_secret"
+report_stats: true
+macaroon_secret_key_path: "/secrets/macaroon_secret_key"
+form_secret_path: "/secrets/form_secret"
+signing_key_path: "/secrets/signing_key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+handlers:
+  file:
+    level: DEBUG
+loggers:
+   ldap3:
+     level: DEBUG
+   ldap_auth_provider:
+     level: DEBUG
+
+# vim:ft=yaml
