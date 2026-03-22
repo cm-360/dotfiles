@@ -1,20 +1,21 @@
 {
   lib,
-  pkgs,
   inputs,
   ...
 }:
 {
   imports = [
-    ./modules/boot.nix
-    ./hardware-configuration.nix
-
     ../../modules/profiles/laptop.nix
     ../../modules/users/cm360.nix
 
     ../../modules/desktop-plasma6.nix
     ../../modules/firewall-syncthing.nix
+
+    ./modules/hardware/boot.nix
+    ./modules/hardware/filesystems.nix
   ];
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   nix.settings = {
     inherit (inputs.secrets.nix) trusted-public-keys;

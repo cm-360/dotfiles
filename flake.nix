@@ -180,10 +180,6 @@
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
           hostname = "air";
-          extraModules = [
-            inputs.mpris-discord-rpc.homeManagerModules.default
-            inputs.plasma-manager.homeModules.plasma-manager
-          ];
         };
         "${defaultUsername}@mintaka" = homeConfig {
           pkgs = nixos-unstable;
@@ -206,9 +202,6 @@
         "air" = nixosConfig {
           pkgs = nixos-unstable;
           hostname = "air";
-          extraModules = [
-            inputs.distro-grub-themes.nixosModules.${defaultSystem}.default
-          ];
         };
         "mintaka" = nixosConfig {
           pkgs = nixos-stable;
