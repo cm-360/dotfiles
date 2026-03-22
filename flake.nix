@@ -212,13 +212,10 @@
           pkgs = nixos-stable;
           hostname = "orion";
         };
-        "raspi" = nixosConfig {
+        "raspi3" = nixosConfig {
           pkgs = nixos-unstable;
           system = "aarch64-linux";
-          hostname = "raspi";
-          extraModules = [
-            inputs.nixos-hardware.nixosModules.raspberry-pi-3
-          ];
+          hostname = "raspi3";
         };
         "tron" = nixosConfig {
           pkgs = nixos-unstable;
