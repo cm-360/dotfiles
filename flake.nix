@@ -137,7 +137,7 @@
           pkgs = importPkgs { inherit pkgs system; };
 
           modules = [
-            ./nix/home-manager/homes/${hostname}_${username}/home.nix
+            ./nix/home-manager/homes/${username}_${hostname}/home.nix
             {
               home = {
                 inherit username;
