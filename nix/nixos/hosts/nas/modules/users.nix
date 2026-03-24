@@ -24,7 +24,11 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit (config.networking) hostName;
+    };
+
     users.cm360 = "${inputs.self}/nix/home-manager/homes/cm360_${config.networking.hostName}/home.nix";
   };
 }

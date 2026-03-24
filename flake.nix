@@ -146,7 +146,12 @@
             }
           ];
 
-          extraSpecialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
+          extraSpecialArgs =
+            (specialArgs {
+              inherit system;
+              hostName = hostname;
+            })
+            // extraSpecialArgs;
         };
 
       nixosConfig =

@@ -1,11 +1,16 @@
-{ config, inputs, ... }:
+{
+  config,
+  inputs,
+  hostName,
+  ...
+}:
 {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
   ];
 
   sops = {
-    defaultSopsFile = "${inputs.secrets}/sops/users/cm360_nas/secrets.yaml";
+    defaultSopsFile = "${inputs.secrets}/sops/users/${config.home.username}_${hostName}/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";

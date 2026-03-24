@@ -1,11 +1,15 @@
-{ inputs, ... }:
+{
+  config,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
 
   sops = {
-    defaultSopsFile = "${inputs.secrets}/sops/hosts/nas/secrets.yaml";
+    defaultSopsFile = "${inputs.secrets}/sops/hosts/${config.networking.hostName}/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
@@ -16,7 +20,7 @@
 
       "zsh/pool0.key" = {
         format = "binary";
-        sopsFile = "${inputs.secrets}/sops/hosts/nas/pool0.key";
+        sopsFile = "${inputs.secrets}/sops/hosts/${config.networking.hostName}/pool0.key";
         mode = "0600";
         path = "/etc/pool0.key";
       };

@@ -30,7 +30,7 @@
 
   nix.settings = {
     secret-key-files = [
-      "${config.sops.secrets."nix/signing-keys/tron-0-private".path}"
+      "${config.sops.secrets."nix/signing-keys/${config.networking.hostName}-0-private".path}"
     ];
     inherit (inputs.secrets.nix) trusted-public-keys;
   };

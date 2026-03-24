@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -14,7 +15,7 @@
   ];
 
   sops = {
-    defaultSopsFile = "${inputs.secrets}/sops/hosts/raspi3/secrets.yaml";
+    defaultSopsFile = "${inputs.secrets}/sops/hosts/${config.networking.hostName}/secrets.yaml";
     defaultSopsFormat = "yaml";
 
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
