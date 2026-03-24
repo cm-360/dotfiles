@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   AccountPanelServerProfile = {
     enabled = true;
@@ -138,8 +139,7 @@
     pinOrder = 0;
     dmSectionCollapsed = false;
     canCollapseDmSection = false;
-    userBasedCategoryList = {
-    };
+    inherit (inputs.secrets.vesktop.plugins.PinDMs) userBasedCategoryList;
   };
   ReadAllNotificationsButton = {
     enabled = true;
@@ -171,6 +171,11 @@
   TextReplace = {
     enabled = true;
     stringRules = [
+      {
+        find = ";disgust";
+        replace = "https://${inputs.secrets.domain}/emojis/disgusted-40.png";
+        onlyIfIncludes = "";
+      }
       {
         find = "";
         replace = "";
