@@ -98,15 +98,6 @@
       defaultSystem = "x86_64-linux";
       defaultUsername = "cm360";
 
-      specialArgs =
-        {
-          system ? defaultSystem,
-        }:
-        {
-          inherit inputs;
-          inherit (inputs.rycee-firefox-addons.lib.${system}) buildFirefoxXpiAddon;
-        };
-
       importPkgs =
         {
           pkgs,
@@ -146,12 +137,11 @@
             }
           ];
 
-          extraSpecialArgs =
-            (specialArgs {
-              inherit system;
-              hostName = hostname;
-            })
-            // extraSpecialArgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            hostName = hostname;
+          }
+          // extraSpecialArgs;
         };
 
       nixosConfig =
@@ -172,7 +162,10 @@
             }
           ];
 
-          specialArgs = (specialArgs { inherit system; }) // extraSpecialArgs;
+          specialArgs = {
+            inherit inputs;
+          }
+          // extraSpecialArgs;
         };
     in
     {
