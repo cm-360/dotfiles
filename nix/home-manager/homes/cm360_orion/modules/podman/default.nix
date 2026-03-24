@@ -19,7 +19,6 @@
     };
   };
 
-  home.packages = with pkgs; [
-    iptables
-  ];
+  # https://github.com/containers/podman/issues/4972
+  home.packages = [ pkgs.iptables ];
 }

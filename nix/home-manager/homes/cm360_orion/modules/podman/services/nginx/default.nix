@@ -26,11 +26,13 @@ in
     autoStart = true;
     autoUpdate = "registry";
 
+    # https://docs.podman.io/en/latest/markdown/podman-create.1.html#userns-mode
     userNS = "host";
 
     # TODO: remote_addr set incorrectly with rootless Podman
     # https://github.com/containers/podman/issues/17765
     # https://github.com/containers/podman/issues/8193
+    # https://blog.podman.io/2024/10/podman-5-3-changes-for-improved-networking-experience-with-pasta/
     # network = [
     #   "slirp4netns:port_handler=slirp4netns"
     #   "proxy:ip=${inputs.secrets.podman.networks.proxy.containers.nginx}"

@@ -23,6 +23,7 @@ in
     subnet = inputs.secrets.podman.networks.synapse.subnet;
   };
 
+  # https://discourse.nixos.org/t/rootless-podman-setup-with-home-manager/57905
   systemd.user.services."pod-${podName}" = {
     Unit = {
       Description = "Podman Synapse pod";
