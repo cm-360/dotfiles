@@ -112,11 +112,6 @@
         import pkgs {
           inherit system;
           overlays = [
-            inputs.craftland.overlays.default
-            inputs.nix-vscode-extensions.overlays.default
-            (final: prev: {
-              spicetifyPackages = inputs.spicetify-nix.legacyPackages.${system};
-            })
           ];
         };
 

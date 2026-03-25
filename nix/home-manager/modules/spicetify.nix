@@ -3,6 +3,9 @@
   inputs,
   ...
 }:
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.spicetify
@@ -24,7 +27,7 @@
           name = "priority-queue/priority-queue.js";
         };
       in
-      with pkgs.spicetifyPackages.extensions;
+      with spicePkgs.extensions;
       [
         adblock
         hidePodcasts
@@ -32,7 +35,7 @@
         priorityQueue
         shuffle
       ];
-    theme = pkgs.spicetifyPackages.themes.comfy;
+    theme = spicePkgs.themes.comfy;
     colorScheme = "Spotify";
   };
 }

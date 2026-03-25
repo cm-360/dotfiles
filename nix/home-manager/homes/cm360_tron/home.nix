@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -30,6 +31,7 @@
     ];
 
   nixpkgs.overlays = [
+    inputs.craftland.overlays.default
     (import ../../../overlays/obsidian-wayland-fix.nix)
     (import ../../../overlays/vesktop-discord-icon.nix)
   ];
