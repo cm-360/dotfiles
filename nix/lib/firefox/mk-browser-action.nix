@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ lib }:
 let
-  browserAction =
+  mkBrowserAction =
     addon:
     let
       sanitizedId = builtins.replaceStrings [ " " ] [ "_" ] (
@@ -9,4 +9,4 @@ let
     in
     sanitizedId + "-browser-action";
 in
-browserAction
+mkBrowserAction

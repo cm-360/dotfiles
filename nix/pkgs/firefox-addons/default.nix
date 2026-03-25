@@ -1,7 +1,6 @@
 { buildFirefoxXpiAddon }:
 let
-  addonsJsonFile = ./addons.json;
-  addonsDetails = builtins.fromJSON (builtins.readFile addonsJsonFile);
+  addonsDetails = builtins.fromJSON (builtins.readFile ./addons.json);
   packages = builtins.mapAttrs (_: details: buildFirefoxXpiAddon details) addonsDetails;
 in
 packages

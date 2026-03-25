@@ -1,18 +1,17 @@
 {
   lib,
   pkgs,
-  buildFirefoxXpiAddon,
-  ...
+  inputs,
 }:
 let
-  browserAction = import ../lib/browser-action.nix { inherit lib; };
+  inherit (pkgs.stdenv.hostPlatform) system;
 
-  defaultSettings = import ../settings.nix;
-  searchEngines = import ../engines.nix { inherit pkgs; };
+  libFirefox = inputs.self.lib.${system}.firefox;
+  inherit (libFirefox) mkBrowserAction;
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
-  ryceeAddons = pkgs.firefox-addons;
-  customAddons = import ../addons { inherit buildFirefoxXpiAddon; };
+  ryceeAddons = inputs.rycee-firefox-addons.packages.${system};
+  customAddons = inputs.self.packages.${system}.firefoxAddons;
 
   # TODO: replace any with userscripts?
   extensions =
@@ -149,7 +148,7 @@ in
         "nixos-wiki"
         "home-manager-options"
         "mynixos"
-      ] searchEngines)
+      ] libFirefox.searchEngines)
       // {
         bing.metaData.hidden = true;
         google.metaData.hidden = true;
@@ -160,7 +159,7 @@ in
   # about:config
   # ~/.mozilla/firefox/<profile>/prefs.js
   # ~/.mozilla/firefox/<profile>/user.js
-  settings = defaultSettings // {
+  settings = libFirefox.defaultSettings // {
     # ----- Appearance -----
 
     # Built-in themes:
@@ -189,8 +188,8 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction ryceeAddons.bitwarden)
-          (browserAction ryceeAddons.simple-tab-groups)
+          (mkBrowserAction ryceeAddons.bitwarden)
+          (mkBrowserAction ryceeAddons.simple-tab-groups)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -198,22 +197,22 @@ in
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
-          (browserAction ryceeAddons.temporary-containers)
+          (mkBrowserAction ryceeAddons.temporary-containers)
         ];
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
           # Ad-blocking / privacy
-          (browserAction ryceeAddons.ublock-origin)
-          (browserAction ryceeAddons.privacy-badger)
-          (browserAction ryceeAddons.clearurls)
-          (browserAction ryceeAddons.localcdn)
+          (mkBrowserAction ryceeAddons.ublock-origin)
+          (mkBrowserAction ryceeAddons.privacy-badger)
+          (mkBrowserAction ryceeAddons.clearurls)
+          (mkBrowserAction ryceeAddons.localcdn)
           # Customization
-          (browserAction ryceeAddons.darkreader)
-          (browserAction ryceeAddons.violentmonkey)
-          (browserAction ryceeAddons.stylus)
+          (mkBrowserAction ryceeAddons.darkreader)
+          (mkBrowserAction ryceeAddons.violentmonkey)
+          (mkBrowserAction ryceeAddons.stylus)
           # Miscellaneous
-          (browserAction ryceeAddons.terms-of-service-didnt-read)
-          (browserAction customAddons.librezam)
+          (mkBrowserAction ryceeAddons.terms-of-service-didnt-read)
+          (mkBrowserAction customAddons.librezam)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];
@@ -227,7 +226,7 @@ in
         "save-to-pocket-button"
       ]
       # Mark all installed extension actions as seen
-      ++ (map browserAction extensions);
+      ++ (map mkBrowserAction extensions);
 
       # Set of area IDs where items have been added, moved, or removed
       # at least once to optimize building default toolbars.

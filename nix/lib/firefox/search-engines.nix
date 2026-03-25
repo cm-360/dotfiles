@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 let
   param = name: value: {
     inherit name;

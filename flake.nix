@@ -98,6 +98,12 @@
       defaultSystem = "x86_64-linux";
       defaultUsername = "cm360";
 
+      forAllSystems =
+        function:
+        nixos-unstable.lib.genAttrs nixos-unstable.lib.systems.flakeExposed (
+          system: (function nixos-unstable.legacyPackages.${system})
+        );
+
       importPkgs =
         {
           pkgs,
@@ -108,7 +114,6 @@
           overlays = [
             inputs.craftland.overlays.default
             inputs.nix-vscode-extensions.overlays.default
-            inputs.rycee-firefox-addons.overlays.default
             (final: prev: {
               spicetifyPackages = inputs.spicetify-nix.legacyPackages.${system};
             })
@@ -228,5 +233,18 @@
           hostname = "nas";
         };
       };
+
+      lib = forAllSystems (pkgs: {
+        firefox = import ./nix/lib/firefox {
+          inherit pkgs inputs;
+          inherit (pkgs) lib;
+        };
+      });
+
+      packages = forAllSystems (pkgs: {
+        firefoxAddons = import ./nix/pkgs/firefox-addons {
+          inherit (inputs.rycee-firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
+        };
+      });
     };
 }

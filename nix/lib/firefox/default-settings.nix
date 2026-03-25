@@ -11,6 +11,9 @@
 
   # ----- Behavior -----
 
+  # https://kb.mozillazine.org/Browser.link.open_newwindow.restriction
+  "browser.link.open_newwindow.restriction" = 0; # 0=all, 1=none, 2=all unless features
+
   # General
   "general.autoScroll" = true; # middle mouse scroll shortcut
   "general.useragent.locale" = "en-US";

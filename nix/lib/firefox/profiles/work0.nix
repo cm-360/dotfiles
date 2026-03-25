@@ -1,28 +1,24 @@
 {
   lib,
   pkgs,
-  ...
+  inputs,
 }:
 let
-  browserAction = import ../lib/browser-action.nix { inherit lib; };
+  inherit (pkgs.stdenv.hostPlatform) system;
 
-  defaultSettings = import ../settings.nix;
-  searchEngines = import ../engines.nix { inherit pkgs; };
+  libFirefox = inputs.self.lib.${system}.firefox;
+  inherit (libFirefox) mkBrowserAction;
 
   # https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/addons.json
-  ryceeAddons = pkgs.firefox-addons;
+  ryceeAddons = inputs.rycee-firefox-addons.packages.${system};
 
   extensions = with ryceeAddons; [
-    auto-tab-discard
     bitwarden
     clearurls
     darkreader
-    download-with-jdownloader
     localcdn
     privacy-badger
-    simple-tab-groups
     stylus
-    temporary-containers
     ublock-origin
     violentmonkey
   ];
@@ -45,11 +41,19 @@ in
 
     engines =
       (lib.getAttrs [
-        "firefox-addons"
-        "openstreetmap"
+        # General
         "startpage"
-        "youtube"
-      ] searchEngines)
+
+        # Development
+        "github"
+        "mdn-web-docs"
+        "python3-docs"
+
+        # Nix
+        "nix-packages"
+        "nixos-options"
+        "nixos-wiki"
+      ] libFirefox.searchEngines)
       // {
         bing.metaData.hidden = true;
         google.metaData.hidden = true;
@@ -57,14 +61,16 @@ in
       };
   };
 
-  settings = defaultSettings // {
+  settings = libFirefox.defaultSettings // {
     # ----- Appearance -----
 
     # Built-in themes:
     # - firefox-alpenglow@mozilla.org
     # - firefox-compact-dark@mozilla.org
     # - firefox-compact-light@mozilla.org
-    "extensions.activeThemeID" = "firefox-alpenglow@mozilla.org";
+    "extensions.activeThemeID" = "{bbc344a9-8a64-460a-895c-1aa98f84a319}";
+
+    # TODO: themes require installation?
 
     # https://searchfox.org/mozilla-central/source/browser/components/customizableui/CustomizableUI.sys.mjs
     "browser.uiCustomization.state" = builtins.toJSON {
@@ -84,9 +90,7 @@ in
           "downloads-button"
           # "fxa-toolbar-menu-button" # Account
           "unified-extensions-button"
-          (browserAction ryceeAddons.violentmonkey)
-          (browserAction ryceeAddons.bitwarden)
-          (browserAction ryceeAddons.simple-tab-groups)
+          (mkBrowserAction ryceeAddons.bitwarden)
         ];
         PersonalToolbar = [ "personal-bookmarks" ];
         TabsToolbar = [
@@ -94,18 +98,18 @@ in
           "tabbrowser-tabs"
           "new-tab-button"
           "alltabs-button"
-          (browserAction ryceeAddons.temporary-containers)
         ];
         toolbar-menubar = [ "menubar-items" ];
         unified-extensions-area = [
           # Ad-blocking / privacy
-          (browserAction ryceeAddons.ublock-origin)
-          (browserAction ryceeAddons.privacy-badger)
-          (browserAction ryceeAddons.clearurls)
-          (browserAction ryceeAddons.localcdn)
-          # Styling
-          (browserAction ryceeAddons.darkreader)
-          (browserAction ryceeAddons.stylus)
+          (mkBrowserAction ryceeAddons.ublock-origin)
+          (mkBrowserAction ryceeAddons.privacy-badger)
+          (mkBrowserAction ryceeAddons.clearurls)
+          (mkBrowserAction ryceeAddons.localcdn)
+          # Customization
+          (mkBrowserAction ryceeAddons.darkreader)
+          (mkBrowserAction ryceeAddons.violentmonkey)
+          (mkBrowserAction ryceeAddons.stylus)
         ];
         vertical-tabs = [ ];
         widget-overflow-fixed-list = [ ];
@@ -119,7 +123,7 @@ in
         "save-to-pocket-button"
       ]
       # Mark all installed extension actions as seen
-      ++ (map browserAction extensions);
+      ++ (map mkBrowserAction extensions);
 
       # Set of area IDs where items have been added, moved, or removed
       # at least once to optimize building default toolbars.
