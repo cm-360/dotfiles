@@ -28,12 +28,13 @@ ul[aria-label="Direct Messages"] {
 
   /***** Hide buttons *****/
 
-  [aria-label="Give a Gift"] {
+  [aria-label*="Gift"],
+  [aria-label*="gift"] {
     display: none;
   }
 
   .expression-picker-chat-input-button {
-    &:has([aria-label="Open sticker picker"]) {
+    &:has([aria-label*="sticker"]) {
       display: none;
     }
   }
