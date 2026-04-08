@@ -125,6 +125,33 @@ in
     definedAliases = [ "@modrinth" ];
   };
 
+  # https://stardewvalleywiki.com/mediawiki/opensearch_desc.php
+  stardew-wiki = {
+    name = "Stardew Valley Wiki";
+    urls = [
+      {
+        template = "https://stardewvalleywiki.com/mediawiki/index.php";
+        params = [
+          (param "title" "Special:Search")
+          (param "search" "{searchTerms}")
+        ];
+      }
+      {
+        template = "https://stardewvalleywiki.com/mediawiki/api.php";
+        params = [
+          (param "action" "opensearch")
+          (param "namespace" "0")
+          (param "search" "{searchTerms}")
+        ];
+        type = "application/x-suggestions+json";
+      }
+    ];
+    icon = "https://stardewvalleywiki.com/mediawiki/extensions/StardewValley/images/favicon.png";
+    updateInterval = daily;
+    metaData.hideOneOffButton = true;
+    definedAliases = [ "@stardew" ];
+  };
+
   # https://terraria.wiki.gg/rest.php/v1/search
   terraria-wiki = {
     name = "Terraria Wiki";

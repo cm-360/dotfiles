@@ -132,6 +132,7 @@ in
         "astroneer-wiki"
         "minecraft-wiki"
         "modrinth-mods"
+        "stardew-wiki"
         "terraria-wiki"
         "calamity-mod-wiki"
 
