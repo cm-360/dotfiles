@@ -152,7 +152,9 @@
   # - ~/.nix-profile/etc/profile.d/hm-session-vars.sh
   # - ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
   # - /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
-  home.sessionVariables = { };
+  home.sessionVariables = {
+    SOPS_AGE_KEY_FILE = "/run/media/cm360/Vault/sops-age-key.txt";
+  };
 
   programs.home-manager.enable = true;
 
