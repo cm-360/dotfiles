@@ -41,6 +41,10 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    jovian-nixos = {
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     mpris-discord-rpc = {
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -215,6 +219,10 @@
         "nas" = nixosConfig {
           pkgs = nixos-stable;
           hostname = "nas";
+        };
+        "steamdeck" = nixosConfig {
+          pkgs = nixos-unstable;
+          hostname = "steamdeck";
         };
       };
 
