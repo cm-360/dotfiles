@@ -10,6 +10,7 @@
     ./modules/firefox.nix
     ./modules/input-devices.nix
     ./modules/sops.nix
+    ./modules/stardew-valley.nix
 
     ../../modules/comma.nix
     ../../modules/desktop.nix

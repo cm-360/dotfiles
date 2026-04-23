@@ -66,6 +66,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+    smapi-nix = {
+      url = "github:cm-360/smapi-nix";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixos-unstable";
@@ -237,6 +241,7 @@
         firefoxAddons = import ./nix/pkgs/firefox-addons {
           inherit (inputs.rycee-firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
         };
+        patch-galaxy-api = import ./nix/pkgs/patch-galaxy-api.nix { };
       });
     };
 }
