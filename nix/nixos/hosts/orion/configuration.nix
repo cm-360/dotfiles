@@ -27,6 +27,10 @@
     inherit (inputs.secrets.nix) trusted-public-keys;
   };
 
+  nixpkgs.overlays = [
+    inputs.namecheap-certbot.overlays.default
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [ ];
