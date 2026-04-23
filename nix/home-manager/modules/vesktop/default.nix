@@ -1,4 +1,9 @@
 {
+  pkgs,
+  inputs,
+  ...
+}:
+{
   imports = [ ./vencord ];
 
   programs.vesktop = {
@@ -6,5 +11,10 @@
     settings = import ./settings.nix;
   };
 
-  xdg.configFile."vesktop/settings/quickCss.css".source = ./vencord/quickCss.css;
+  xdg.configFile."vesktop/settings/quickCss.css".source = (
+    pkgs.concatText "quickCss.css" [
+      ./vencord/quickCss.css
+      (pkgs.writeText "extraCss.css" inputs.secrets.vesktop.extraCss)
+    ]
+  );
 }
