@@ -14,7 +14,7 @@ export PATH="$DOTFILES/scripts:$PATH"
 
 # Enter Nix user chroot if available
 # https://github.com/nix-community/nix-user-chroot
-# https://nixos.wiki/wiki/Nix_Installation_Guide#nix-user-chroot
+# https://wiki.nixos.org/wiki/Nix_Installation_Guide#nix-user-chroot
 if command -v nix-user-chroot > /dev/null 2>&1 && [ -z "$_NIX_USER_CHROOT_ACTIVE" ]; then
     export _NIX_USER_CHROOT_ACTIVE=1
     exec "$HOME/.local/bin/nix-user-chroot" "$HOME/.nix" "$SHELL"
