@@ -8,8 +8,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-raspberrypi = {
-      # https://github.com/nvmd/nixos-raspberrypi/pull/131
-      url = "github:nvmd/nixos-raspberrypi/remove-options-compat";
+      url = "github:nvmd/nixos-raspberrypi";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
 
