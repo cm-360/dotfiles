@@ -104,17 +104,6 @@
           system: (function nixos-unstable.legacyPackages.${system})
         );
 
-      importPkgs =
-        {
-          pkgs,
-          system ? defaultSystem,
-        }:
-        import pkgs {
-          inherit system;
-          overlays = [
-          ];
-        };
-
       homeConfig =
         {
           pkgs,
@@ -125,7 +114,7 @@
           extraSpecialArgs ? { },
         }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = importPkgs { inherit pkgs system; };
+          pkgs = pkgs.legacyPackages.${system};
 
           modules = [
             ./nix/home-manager/homes/${username}_${hostname}/home.nix
