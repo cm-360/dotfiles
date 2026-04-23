@@ -9,6 +9,7 @@
     ../../modules/gpg.nix
     ../../modules/vscode-server.nix
 
+    ./modules/minecraft
     ./modules/podman
     ./modules/sops.nix
   ];
