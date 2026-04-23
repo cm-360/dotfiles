@@ -21,6 +21,8 @@ let
   };
 in
 {
+  imports = [ ./certbot.nix ];
+
   services.podman.containers.nginx = {
     image = "docker.io/nginx:alpine";
     autoStart = true;

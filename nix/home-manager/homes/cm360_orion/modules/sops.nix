@@ -60,6 +60,10 @@
 
       "podman/vaultwarden/admin_token_env".mode = "0600";
       "podman/vaultwarden/smtp_env".mode = "0600";
+
+      "namecheap/username".mode = "0600";
+      "namecheap/password".mode = "0600";
+      "namecheap/totp_secret".mode = "0600";
     };
   };
 }

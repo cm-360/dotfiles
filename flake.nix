@@ -49,6 +49,10 @@
       url = "github:cm-360/mpris-discord-rpc?ref=feature/nix-package";
       inputs.nixpkgs.follows = "nixos-unstable";
     };
+    namecheap-certbot = {
+      url = "github:cm-360/namecheap-certbot";
+      inputs.nixpkgs.follows = "nixos-unstable";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixos-unstable";
