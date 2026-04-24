@@ -50,7 +50,7 @@
                 "applications:firefox.desktop"
                 "applications:vesktop.desktop"
                 "applications:codium.desktop"
-                "applications:spotify.desktop"
+                "applications:feishin.desktop"
               ];
             };
           }
