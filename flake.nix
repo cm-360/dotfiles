@@ -244,7 +244,7 @@
         firefoxAddons = import ./nix/pkgs/firefox-addons {
           inherit (inputs.rycee-firefox-addons.lib.${pkgs.stdenv.hostPlatform.system}) buildFirefoxXpiAddon;
         };
-        patch-galaxy-api = import ./nix/pkgs/patch-galaxy-api.nix { };
+        patch-galaxy-api = pkgs.callPackage ./nix/pkgs/patch-galaxy-api.nix { };
       });
     };
 }
