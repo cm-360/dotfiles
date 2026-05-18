@@ -12,7 +12,6 @@
     ./modules/hardware/filesystems.nix
     ./modules/hardware/impermanence.nix
     ./modules/sops.nix
-    ./modules/ssh.nix
     ./modules/users.nix
   ];
 
