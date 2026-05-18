@@ -6,9 +6,13 @@
   imports = [
     ../../modules/plasma
     ../../modules/spicetify.nix
+
+    ./modules/stardew-valley.nix
   ];
 
   home.packages = with pkgs; [
+    steamtinkerlaunch
+
     # Games
     craftland-launcher
     prismlauncher
