@@ -75,29 +75,6 @@
         "type": "github"
       }
     },
-    "eden": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixos-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773321953,
-        "narHash": "sha256-/Y5a5/AFyEAqik2jGF55ollH19pUVFFuHxIFrJGDhws=",
-        "owner": "grantimatter",
-        "repo": "eden-flake",
-        "rev": "c9f150ac10eef6fe46f8e007f0fa8b93b3beb4c0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "grantimatter",
-        "repo": "eden-flake",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "locked": {
         "lastModified": 1767039857,
@@ -512,7 +489,6 @@
         "ca-certs": "ca-certs",
         "craftland": "craftland",
         "distro-grub-themes": "distro-grub-themes",
-        "eden": "eden",
         "flake-utils": "flake-utils",
         "home-manager-stable": "home-manager-stable",
         "home-manager-unstable": "home-manager-unstable",
@@ -559,11 +535,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1776974645,
-        "narHash": "sha256-8xSP5nCY4qQl9GO911pj6o3veSKZ8aQGI1hHVoauc5M=",
+        "lastModified": 1779213111,
+        "narHash": "sha256-95BW1kZ27PW7r4xt/F1cg98xsOSeXFIuD6SlSDIIh3E=",
         "ref": "refs/heads/main",
-        "rev": "134bcc54acc1b5658b9eb0e848f1412724a68cb7",
-        "revCount": 27,
+        "rev": "314468cc8a0d1d16fafcd5609bb912bd9b557705",
+        "revCount": 28,
         "type": "git",
         "url": "ssh://cm360@orion/home/cm360/secrets.git"
       },

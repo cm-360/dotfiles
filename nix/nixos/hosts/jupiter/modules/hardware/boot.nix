@@ -43,7 +43,7 @@
 
     initrd.luks.devices."cryptroot" = {
       device = "/dev/disk/by-uuid/43b170fb-d566-4049-be77-eb5f70d42794";
-      keyFile = "/keys/steamdeck.key";
+      keyFile = "/keys/jupiter.key";
       allowDiscards = true;
     };
   };

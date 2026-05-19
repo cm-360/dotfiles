@@ -34,11 +34,6 @@
       inputs.nixpkgs.follows = "nixos-unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
-    eden = {
-      url = "github:grantimatter/eden-flake";
-      inputs.nixpkgs.follows = "nixos-unstable";
-      inputs.flake-utils.follows = "flake-utils";
-    };
     flake-utils.url = "github:numtide/flake-utils";
     jovian-nixos = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -170,10 +165,15 @@
     in
     {
       homeConfigurations = {
-        "${defaultUsername}@air" = homeConfig {
+        "${defaultUsername}@apollo" = homeConfig {
           pkgs = nixos-unstable;
           home-manager = home-manager-unstable;
-          hostname = "air";
+          hostname = "apollo";
+        };
+        "${defaultUsername}@artemis" = homeConfig {
+          pkgs = nixos-unstable;
+          home-manager = home-manager-unstable;
+          hostname = "artemis";
         };
         "${defaultUsername}@mintaka" = homeConfig {
           pkgs = nixos-unstable;
@@ -185,17 +185,24 @@
           home-manager = home-manager-unstable;
           hostname = "orion";
         };
-        "${defaultUsername}@tron" = homeConfig {
-          pkgs = nixos-unstable;
-          home-manager = home-manager-unstable;
-          hostname = "tron";
-        };
       };
 
       nixosConfigurations = {
-        "air" = nixosConfig {
+        "apollo" = nixosConfig {
           pkgs = nixos-unstable;
-          hostname = "air";
+          hostname = "apollo";
+        };
+        "artemis" = nixosConfig {
+          pkgs = nixos-unstable;
+          hostname = "artemis";
+        };
+        "athena" = nixosConfig {
+          pkgs = nixos-stable;
+          hostname = "athena";
+        };
+        "jupiter" = nixosConfig {
+          pkgs = nixos-unstable;
+          hostname = "jupiter";
         };
         "mintaka" = nixosConfig {
           pkgs = nixos-stable;
@@ -218,18 +225,6 @@
           extraSpecialArgs = {
             inherit (inputs) nixos-raspberrypi;
           };
-        };
-        "tron" = nixosConfig {
-          pkgs = nixos-unstable;
-          hostname = "tron";
-        };
-        "nas" = nixosConfig {
-          pkgs = nixos-stable;
-          hostname = "nas";
-        };
-        "steamdeck" = nixosConfig {
-          pkgs = nixos-unstable;
-          hostname = "steamdeck";
         };
       };
 
